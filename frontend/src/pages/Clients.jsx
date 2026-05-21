@@ -1,87 +1,71 @@
-import React from 'react';
+import { motion as Motion } from 'framer-motion';
 import { Star } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { clientsList } from '../content/clientsContent';
-import '../App.css';
+import '../styles/clients-editorial.css';
 
 function Clients() {
-  const { t } = useLanguage();
   const clientItems = clientsList.map((client, index) => ({
     id: index + 1,
     ...client,
     initials: client.name
       .split(' ')
       .slice(0, 2)
-      .map((w) => w[0])
+      .map((word) => word[0])
       .join('')
-      .toUpperCase()
+      .toUpperCase(),
   }));
 
   return (
-    <section id="clients" className="section clients clients-page-premium">
-      <div className="clients-bg-deco" aria-hidden="true" />
-      <div className="container">
-        <header className="clients-header-premium">
-          <span className="clients-badge-premium">{t('clients.badge')}</span>
-          <h2 className="clients-title-premium">{t('clients.title')}</h2>
-          <p className="clients-subtitle-premium">
-            {t('clients.realStoriesSubtitle')}
+    <main className="clients-editorial-page">
+      <section className="clients-editorial-hero">
+        <div className="luxury-container">
+          <span className="cinematic-kicker">Trust and transformation</span>
+          <h1>Client stories that read like case studies.</h1>
+          <p>
+            From desain rumah minimalis to interior apartemen mewah, each testimonial reflects a transformation in how a space looks, works, and feels.
           </p>
-          <div className="clients-kpi-premium">
-            <div className="clients-kpi-item">
-              <span className="clients-kpi-value">{clientItems.length}+</span>
-              <span className="clients-kpi-label">{t('clients.kpiProfiles')}</span>
-            </div>
-            <div className="clients-kpi-item">
-              <span className="clients-kpi-value">4.9<span className="clients-kpi-unit">/5</span></span>
-              <span className="clients-kpi-label">{t('clients.kpiRating')}</span>
-            </div>
-            <div className="clients-kpi-item">
-              <span className="clients-kpi-value">95<span className="clients-kpi-unit">%</span></span>
-              <span className="clients-kpi-label">{t('clients.kpiOnTime')}</span>
-            </div>
+          <div className="clients-editorial-stats">
+            <div><strong>{clientItems.length}+</strong><span>Stories</span></div>
+            <div><strong>4.9</strong><span>Avg. rating</span></div>
+            <div><strong>95%</strong><span>On-time rhythm</span></div>
           </div>
-        </header>
+        </div>
+      </section>
 
-        <div className="clients-grid-premium">
-          {clientItems.map((client) => (
-            <article key={client.id} className="client-card-premium">
+      <section className="clients-masonry-section">
+        <div className="luxury-container clients-masonry">
+          {clientItems.map((client, index) => (
+            <Motion.article
+              key={client.id}
+              className={`client-story-card ${index % 3 === 0 ? 'feature' : ''}`}
+              initial={{ opacity: 0, y: 34 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.22 }}
+              transition={{ duration: 0.7, delay: (index % 3) * 0.08 }}
+            >
               {client.photo ? (
-                <div className="client-card-premium-media">
-                  <img
-                    src={client.photo}
-                    alt={client.name}
-                    className="client-card-premium-img"
-                    loading="lazy"
-                  />
-                </div>
+                <img src={client.photo} alt={`${client.name}, ${client.project} client`} loading="lazy" />
               ) : (
-                <div className="client-card-premium-avatar-wrap">
-                  <div className="client-card-premium-avatar">{client.initials}</div>
-                </div>
+                <div className="client-story-card__initials">{client.initials}</div>
               )}
-
-              <div className="client-card-premium-content">
-                <div className="client-card-premium-meta">
-                  <h3 className="client-card-premium-name">{client.name}</h3>
-                  <p className="client-card-premium-role">{client.role}</p>
-                </div>
-                <div className="client-card-premium-stars">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={16} className={i < client.rating ? 'filled' : ''} />
+              <div className="client-story-card__content">
+                <div className="client-story-card__stars" aria-label={`${client.rating} star rating`}>
+                  {Array.from({ length: 5 }).map((_, starIndex) => (
+                    <Star key={starIndex} size={15} className={starIndex < client.rating ? 'filled' : ''} />
                   ))}
-                  <span className="client-card-premium-rating">{client.rating}.0</span>
                 </div>
-                <blockquote className="client-card-premium-quote">
-                  <span className="client-card-premium-quote-mark">"</span>
-                  {client.testimonial}
-                </blockquote>
+                <blockquote>{client.testimonial}</blockquote>
+                <div className="client-story-card__meta">
+                  <strong>{client.name}</strong>
+                  <span>{client.project}</span>
+                  <small>{client.location} / {client.timeline}</small>
+                </div>
               </div>
-            </article>
+            </Motion.article>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
 

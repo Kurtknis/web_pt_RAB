@@ -1,0 +1,151 @@
+.clients-editorial-page {
+  background: #f4eee3;
+  color: #11100e;
+}
+
+.clients-editorial-hero {
+  min-height: 72svh;
+  display: grid;
+  align-items: end;
+  padding: 10rem 0 5rem;
+  background:
+    linear-gradient(90deg, rgba(17, 16, 14, 0.84), rgba(17, 16, 14, 0.36)),
+    linear-gradient(0deg, rgba(17, 16, 14, 0.9), transparent 45%),
+    url('/photo_proyek/photoPJK/Rumah%20Graha%20Raya/Rumah-Graha-Raya-1.webp') center / cover;
+  color: #f7f1e8;
+}
+
+.clients-editorial-hero h1 {
+  max-width: 980px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.1rem, 8vw, 8rem);
+  line-height: 0.94;
+  letter-spacing: 0;
+}
+
+.clients-editorial-hero p {
+  max-width: 720px;
+  margin-top: 1.4rem;
+  font-family: Inter, sans-serif;
+  color: rgba(247, 241, 232, 0.76);
+}
+
+.clients-editorial-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 160px));
+  gap: 1px;
+  margin-top: 2.4rem;
+  background: rgba(247, 241, 232, 0.18);
+}
+
+.clients-editorial-stats div {
+  padding: 1rem;
+  background: rgba(17, 16, 14, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+.clients-editorial-stats strong {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  line-height: 0.9;
+}
+
+.clients-editorial-stats span {
+  color: rgba(247, 241, 232, 0.68);
+  font-family: Inter, sans-serif;
+}
+
+.clients-masonry-section {
+  padding: clamp(4.5rem, 8vw, 8rem) 0;
+}
+
+.clients-masonry {
+  columns: 3 280px;
+  column-gap: 1rem;
+}
+
+.client-story-card {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(17, 16, 14, 0.12);
+  background: rgba(255, 255, 255, 0.38);
+  box-shadow: 0 24px 70px rgba(17, 16, 14, 0.08);
+  break-inside: avoid;
+}
+
+.client-story-card.feature {
+  background: #11100e;
+  color: #f7f1e8;
+}
+
+.client-story-card > img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+}
+
+.client-story-card__initials {
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(122, 79, 42, 0.88), rgba(17, 16, 14, 0.92)),
+    #11100e;
+  color: #c8a45d;
+  font: 600 4rem 'Playfair Display', serif;
+}
+
+.client-story-card__content {
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.client-story-card__stars {
+  display: flex;
+  gap: 0.2rem;
+  color: rgba(17, 16, 14, 0.24);
+}
+
+.client-story-card.feature .client-story-card__stars {
+  color: rgba(247, 241, 232, 0.22);
+}
+
+.client-story-card__stars .filled {
+  color: #c8a45d;
+  fill: #c8a45d;
+}
+
+.client-story-card blockquote {
+  margin: 1rem 0 1.2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.35rem, 2.4vw, 2.15rem);
+  line-height: 1.18;
+}
+
+.client-story-card__meta {
+  display: grid;
+  gap: 0.25rem;
+  font-family: Inter, sans-serif;
+}
+
+.client-story-card__meta span,
+.client-story-card__meta small {
+  color: rgba(17, 16, 14, 0.62);
+}
+
+.client-story-card.feature .client-story-card__meta span,
+.client-story-card.feature .client-story-card__meta small {
+  color: rgba(247, 241, 232, 0.62);
+}
+
+@media (max-width: 760px) {
+  .clients-editorial-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .clients-masonry {
+    columns: 1;
+  }
+}

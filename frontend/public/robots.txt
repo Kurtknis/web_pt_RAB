@@ -3,6 +3,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ptciptakreasibuana.com/sitemap.xml
-
-# Disallow admin/API if any (Django backend typically on different subdomain)
-# Disallow: /api/

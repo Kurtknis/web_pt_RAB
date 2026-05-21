@@ -1,21 +1,23 @@
-import { useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import HomeSimple from './pages/HomeSimple';
-import Portfolio from './pages/Portfolio';
-import Services from './pages/Services';
-import ServiceDetail from './pages/ServiceDetail';
-import Pricing from './pages/Pricing';
-import Gallery from './pages/Gallery';
-import Furniture from './pages/Furniture';
-import Clients from './pages/Clients';
-import Consultation from './pages/Consultation';
-import Contact from './pages/Contact';
+import SEO from './components/SEO';
 import StickyCtaMobile from './components/StickyCtaMobile';
 import './App.css';
+
+const StaticHome = lazy(() => import('./pages/StaticHome'));
+const Home = lazy(() => import('./pages/Home'));
+const Portfolio = lazy(() => import('./pages/Portfolio'));
+const Services = lazy(() => import('./pages/Services'));
+const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
+const Pricing = lazy(() => import('./pages/Pricing'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const Furniture = lazy(() => import('./pages/Furniture'));
+const Clients = lazy(() => import('./pages/Clients'));
+const Consultation = lazy(() => import('./pages/Consultation'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 // Scroll to top or hash on route change
 function ScrollToTop() {
@@ -40,22 +42,25 @@ function App() {
     <LanguageProvider>
       <Router>
         <ScrollToTop />
+        <SEO />
         <div className="app">
           <Navbar />
           <StickyCtaMobile />
-          <Routes>
-            <Route path="/" element={<HomeSimple />} />
-            <Route path="/home-full" element={<Home />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/layanan" element={<Services />} />
-            <Route path="/layanan/:serviceId" element={<ServiceDetail />} />
-            <Route path="/furnitur" element={<Furniture />} />
-            <Route path="/harga" element={<Pricing />} />
-            <Route path="/galeri" element={<Gallery />} />
-            <Route path="/klien" element={<Clients />} />
-            <Route path="/konsultasi" element={<Consultation />} />
-            <Route path="/kontak" element={<Contact />} />
-          </Routes>
+          <Suspense fallback={<div className="route-loader">Loading studio experience...</div>}>
+            <Routes>
+              <Route path="/" element={<StaticHome />} />
+              <Route path="/home-full" element={<Home />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/layanan" element={<Services />} />
+              <Route path="/layanan/:serviceId" element={<ServiceDetail />} />
+              <Route path="/furnitur" element={<Furniture />} />
+              <Route path="/harga" element={<Pricing />} />
+              <Route path="/galeri" element={<Gallery />} />
+              <Route path="/klien" element={<Clients />} />
+              <Route path="/konsultasi" element={<Consultation />} />
+              <Route path="/kontak" element={<Contact />} />
+            </Routes>
+          </Suspense>
           <Footer />
         </div>
       </Router>

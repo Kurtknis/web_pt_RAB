@@ -1,0 +1,230 @@
+.pricing-editorial-page {
+  background: #f4eee3;
+  color: #11100e;
+}
+
+.pricing-editorial-hero {
+  min-height: 72svh;
+  display: grid;
+  align-items: end;
+  padding: 10rem 0 5rem;
+  color: #f7f1e8;
+  background:
+    linear-gradient(90deg, rgba(17, 16, 14, 0.82), rgba(17, 16, 14, 0.42)),
+    linear-gradient(0deg, rgba(17, 16, 14, 0.9), transparent 48%),
+    url('/photo_proyek/photoPJK/Namo%20Seafood%20-%20Ruko%20Golf%20Island%20PIK/FACADE%20PARKING%20VIEW.jpg') center / cover;
+}
+
+.pricing-editorial-hero h1,
+.pricing-ranges-editorial h2 {
+  max-width: 980px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.2rem, 8vw, 8rem);
+  line-height: 0.94;
+  letter-spacing: 0;
+}
+
+.pricing-editorial-hero p {
+  max-width: 720px;
+  margin-top: 1.4rem;
+  font-family: Inter, sans-serif;
+  color: rgba(247, 241, 232, 0.78);
+}
+
+.pricing-editorial-section {
+  padding: clamp(4.5rem, 9vw, 8rem) 0;
+}
+
+.package-strip {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  scrollbar-width: thin;
+}
+
+.package-strip button {
+  flex: 0 0 auto;
+  min-width: 210px;
+  min-height: 64px;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 16, 14, 0.14);
+  background: rgba(255, 255, 255, 0.38);
+  color: #11100e;
+  font: 800 0.82rem Inter, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.package-strip button span {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: #9a7742;
+}
+
+.package-strip button.active {
+  background: #11100e;
+  color: #f7f1e8;
+}
+
+.package-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  min-height: 680px;
+  background: rgba(255, 255, 255, 0.34);
+  border: 1px solid rgba(17, 16, 14, 0.12);
+  box-shadow: 0 35px 90px rgba(17, 16, 14, 0.1);
+}
+
+.package-stage__copy {
+  padding: clamp(1.6rem, 4vw, 3.8rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.package-stage__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #9a7742;
+  font: 800 0.76rem Inter, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.package-stage h2 {
+  margin: 1rem 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 6rem);
+  line-height: 0.96;
+}
+
+.package-stage__price {
+  margin-bottom: 1.4rem;
+  font: 800 1.1rem Inter, sans-serif;
+  color: #7a4f2a;
+}
+
+.package-stage ul {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.package-stage li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  font-family: Inter, sans-serif;
+  color: rgba(17, 16, 14, 0.72);
+}
+
+.package-stage__projects {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+.package-stage__projects figure {
+  position: relative;
+  min-height: 260px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.package-stage__projects figure.large {
+  grid-row: span 2;
+}
+
+.package-stage__projects img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms ease;
+}
+
+.package-stage__projects figure:hover img {
+  transform: scale(1.05);
+}
+
+.package-stage__projects figcaption {
+  position: absolute;
+  inset: auto 1rem 1rem;
+  padding: 1rem;
+  color: #f7f1e8;
+  background: linear-gradient(135deg, rgba(17, 16, 14, 0.74), rgba(17, 16, 14, 0.32));
+  backdrop-filter: blur(12px);
+}
+
+.package-stage__projects span,
+.pricing-ranges-editorial article span {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #c8a45d;
+  font: 800 0.72rem Inter, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.package-stage__projects strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+}
+
+.pricing-ranges-editorial {
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  background: #11100e;
+  color: #f7f1e8;
+}
+
+.pricing-ranges-editorial h2 {
+  font-size: clamp(2.8rem, 6vw, 6.5rem);
+}
+
+.pricing-ranges-editorial__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 2.5rem;
+  background: rgba(244, 238, 227, 0.14);
+}
+
+.pricing-ranges-editorial article {
+  padding: 1.4rem;
+  background: #11100e;
+}
+
+.pricing-ranges-editorial article strong {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+}
+
+.pricing-ranges-editorial article p {
+  color: rgba(247, 241, 232, 0.68);
+  font-family: Inter, sans-serif;
+}
+
+@media (max-width: 900px) {
+  .package-stage,
+  .package-stage__projects,
+  .pricing-ranges-editorial__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .package-stage {
+    min-height: 0;
+  }
+
+  .package-stage__projects figure,
+  .package-stage__projects figure.large {
+    min-height: 340px;
+    grid-row: auto;
+  }
+}

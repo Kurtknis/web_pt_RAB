@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components -- context exports provider + hook */
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext } from 'react';
 import { translations } from '../translations/translations';
 
 const LanguageContext = createContext();
@@ -13,23 +13,12 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState(() => {
-    const saved = localStorage.getItem('language') || 'id';
-    if (saved === 'es') return 'id';
-    return saved;
-  });
-
-  useEffect(() => {
-    localStorage.setItem('language', language);
-  }, [language]);
-
-  const changeLanguage = (lang) => {
-    setLanguage(lang);
-  };
+  const language = 'id';
+  const changeLanguage = () => {};
 
   const t = (key, params = {}) => {
     const keys = key.split('.');
-    let value = translations[language];
+    let value = translations.id;
     for (const k of keys) {
       value = value?.[k];
     }

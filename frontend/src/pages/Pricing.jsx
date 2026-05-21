@@ -1,92 +1,102 @@
-import React, { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { pricingProjects, pricingPackages } from '../content/pricingPageContent';
-import { ArrowRight } from 'lucide-react';
-import '../styles/pricing-package.css';
-import '../App.css';
+import { motion as Motion } from 'framer-motion';
+import { ArrowRight, Check, Sparkles } from 'lucide-react';
+import { priceRanges, pricingProjects, pricingPackages } from '../content/pricingPageContent';
+import '../styles/pricing-editorial.css';
 
 function Pricing() {
   const [activePackage, setActivePackage] = useState(0);
-
-  const packages = pricingPackages;
-  const active = packages[activePackage] || packages[0];
+  const active = pricingPackages[activePackage] || pricingPackages[0];
 
   const projectExamples = useMemo(() => {
-    if (!active || !active.projectExampleIds) return [];
-    return active.projectExampleIds
-      .map((id) => pricingProjects.find((p) => p.id === id))
-      .filter(Boolean);
+    if (!active?.projectExampleIds) return [];
+    return active.projectExampleIds.map((id) => pricingProjects.find((project) => project.id === id)).filter(Boolean);
   }, [active]);
 
   return (
-    <section id="pricing" className="pricing-page">
-      <div className="container">
-        <h1>Harga Jasa Design Interior</h1>
-        <p>
-          Pilih paket layanan yang sesuai dengan kebutuhan proyek interior,
-          arsitektur, atau renovasi Anda.
-        </p>
+    <main className="pricing-editorial-page">
+      <section className="pricing-editorial-hero">
+        <div className="luxury-container">
+          <span className="cinematic-kicker">Service investment</span>
+          <h1>Pricing as a proposal, not a spreadsheet.</h1>
+          <p>
+            Transparent starting points for design interior modern, kontraktor interior premium,
+            custom furniture, and design-build projects in Tangerang and Jakarta.
+          </p>
+        </div>
+      </section>
 
-        <div className="pricing-selector-layout">
-          {/* LEFT: list of pricing packages (buttons) */}
-          <aside className="pricing-package-selector" role="listbox" aria-label="Pilih paket harga">
-            {packages.map((pkg, index) => (
+      <section className="pricing-editorial-section">
+        <div className="luxury-container">
+          <div className="package-strip" role="tablist" aria-label="Premium package selector">
+            {pricingPackages.map((pkg, index) => (
               <button
                 key={pkg.id}
                 type="button"
-                role="option"
+                role="tab"
                 aria-selected={index === activePackage}
-                className={`pricing-package-option ${index === activePackage ? 'active' : ''}`}
+                className={index === activePackage ? 'active' : ''}
                 onClick={() => setActivePackage(index)}
               >
+                <span>0{index + 1}</span>
                 {pkg.name}
               </button>
             ))}
-          </aside>
+          </div>
 
-          {/* RIGHT: active package detail */}
-          <div className="pricing-package-detail" role="region" aria-live="polite">
-            <h3 className="pricing-package-detail-title">{active.name}</h3>
-            <p className="pricing-package-starting-price">
-              Mulai {active.startingPrice}
-            </p>
-
-            <p className="pricing-package-services-title">Layanan yang termasuk</p>
-            <ul className="pricing-package-services-list">
-              {active.includedServices.map((service, i) => (
-                <li key={i}>{service}</li>
-              ))}
-            </ul>
-
-            {projectExamples.length > 0 && (
-              <>
-                <p className="pricing-package-examples-title">Contoh proyek</p>
-                <div className="pricing-package-examples">
-                  {projectExamples.map((project) => (
-                    <div key={project.id} className="pricing-package-example-card">
-                      <img
-                        src={project.image}
-                        alt={`${project.title} - ${project.location} - PT Cipta Kreasi Buana`}
-                        loading="lazy"
-                        width="200"
-                        height="100"
-                      />
-                      <span>{project.title}</span>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-
-            <div className="pricing-package-cta">
-              <Link to="/konsultasi" className="pricing-consult-btn">
-                Konsultasi Sekarang <ArrowRight size={16} />
+          <Motion.article
+            key={active.id}
+            className="package-stage"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="package-stage__copy">
+              <span className="package-stage__label"><Sparkles size={16} /> Selected service</span>
+              <h2>{active.name}</h2>
+              <p className="package-stage__price">Mulai {active.startingPrice}</p>
+              <ul>
+                {active.includedServices.map((service) => (
+                  <li key={service}><Check size={16} /> {service}</li>
+                ))}
+              </ul>
+              <Link to="/konsultasi" className="luxury-button luxury-button--primary">
+                Request project brief <ArrowRight size={18} />
               </Link>
             </div>
+
+            <div className="package-stage__projects">
+              {projectExamples.map((project, index) => (
+                <figure key={project.id} className={index === 0 ? 'large' : ''}>
+                  <img src={project.image} alt={`${project.title}, ${project.location} interior project`} loading="lazy" />
+                  <figcaption>
+                    <span>{project.location}</span>
+                    <strong>{project.title}</strong>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </Motion.article>
+        </div>
+      </section>
+
+      <section className="pricing-ranges-editorial">
+        <div className="luxury-container">
+          <span className="cinematic-kicker">Area-based estimates</span>
+          <h2>Calm ranges for early budgeting.</h2>
+          <div className="pricing-ranges-editorial__grid">
+            {priceRanges.map((range) => (
+              <article key={`${range.sqmMin}-${range.sqmMax || 'up'}`}>
+                <span>{range.sqmMin} m2 {range.sqmMax ? `- ${range.sqmMax} m2` : 'up'}</span>
+                <strong>{range.pricePerSqm}/m2</strong>
+                <p>{range.description}</p>
+              </article>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
 

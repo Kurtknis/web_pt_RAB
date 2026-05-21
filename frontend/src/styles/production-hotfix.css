@@ -1,0 +1,696 @@
+﻿/* Production stabilization layer: keeps the luxury direction while restoring predictable layout. */
+:root {
+  --space-section: clamp(4.5rem, 8vw, 8rem);
+  --space-section-tight: clamp(3rem, 6vw, 5rem);
+  --container-luxury: min(1440px, calc(100% - 48px));
+  --container-editorial: min(1180px, calc(100% - 48px));
+  --z-nav: 1000;
+  --z-drawer: 1001;
+}
+
+html,
+body,
+#root,
+.app {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body.nav-mobile-open {
+  overflow: hidden;
+}
+
+.luxury-container,
+.container {
+  width: var(--container-editorial);
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.luxury-section {
+  padding-block: var(--space-section);
+}
+
+/* Stable floating glass navbar */
+.luxury-navbar.navbar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  right: auto;
+  width: min(1240px, calc(100% - 40px));
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  transform: translateX(-50%);
+  border: 1px solid rgba(244, 238, 227, 0.22);
+  border-radius: 18px;
+  background: rgba(18, 17, 15, 0.34);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  animation: none;
+  z-index: var(--z-nav);
+}
+
+.luxury-navbar.navbar.scrolled {
+  top: 12px;
+  left: 50%;
+  right: auto;
+  width: min(1180px, calc(100% - 32px));
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  transform: translateX(-50%);
+  border-radius: 16px;
+  border-color: rgba(17, 16, 14, 0.12);
+  background: rgba(244, 238, 227, 0.82);
+  box-shadow: 0 14px 42px rgba(17, 16, 14, 0.14);
+}
+
+.luxury-navbar.navbar::before {
+  display: none;
+}
+
+.luxury-nav-shell {
+  width: 100%;
+  padding: 0 16px;
+}
+
+.luxury-nav-content.nav-content {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.luxury-navbar.scrolled .luxury-nav-content.nav-content {
+  min-height: 60px;
+}
+
+.luxury-navbar .logo,
+.luxury-navbar .logo-link {
+  min-width: max-content;
+}
+
+.luxury-navbar .logo-brand {
+  display: block;
+  max-width: none;
+  overflow: hidden;
+  color: #f7f1e8;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  font: 800 clamp(0.68rem, 0.92vw, 0.8rem)/1 Inter, sans-serif;
+  letter-spacing: 0.14em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.luxury-navbar.scrolled .logo-brand {
+  color: #17120c;
+}
+
+.luxury-navbar .nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
+  min-width: 0;
+}
+
+.luxury-nav-menu.nav-menu {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  gap: clamp(0.55rem, 1.4vw, 1.25rem);
+  width: auto;
+  min-height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.luxury-nav-menu.nav-menu li {
+  display: flex;
+}
+
+.luxury-nav-menu.nav-menu a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(247, 241, 232, 0.82);
+  font: 750 clamp(0.7rem, 0.78vw, 0.78rem)/1 Inter, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 180ms ease;
+}
+
+.luxury-navbar.scrolled .luxury-nav-menu.nav-menu a {
+  color: rgba(17, 16, 14, 0.72);
+}
+
+.luxury-nav-menu.nav-menu a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 7px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.35);
+  transform-origin: center;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.luxury-nav-menu.nav-menu a:hover,
+.luxury-nav-menu.nav-menu a.active,
+.luxury-nav-menu.nav-menu .luxury-nav-cta {
+  color: #f7f1e8;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none;
+}
+
+.luxury-navbar.scrolled .luxury-nav-menu.nav-menu a:hover,
+.luxury-navbar.scrolled .luxury-nav-menu.nav-menu a.active,
+.luxury-navbar.scrolled .luxury-nav-menu.nav-menu .luxury-nav-cta {
+  color: #17120c;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.luxury-nav-menu.nav-menu a:hover::after,
+.luxury-nav-menu.nav-menu a.active::after {
+  opacity: 0.72;
+  transform: scaleX(1);
+}
+
+.luxury-nav-menu.nav-menu a svg {
+  display: none;
+}
+
+.luxury-navbar .language-selector,
+.luxury-navbar .language-button,
+.luxury-navbar .language-dropdown {
+  display: none !important;
+}
+
+.brand-philosophy-section {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(200, 164, 93, 0.12), transparent 32%),
+    linear-gradient(180deg, #f6efe4 0%, #f1eadf 100%);
+}
+
+.brand-philosophy-layout {
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) minmax(240px, 320px) minmax(320px, 0.82fr);
+  gap: clamp(1.75rem, 3.8vw, 4rem);
+  align-items: center;
+}
+
+.brand-philosophy-copy h2 {
+  max-width: 680px;
+  margin: 0;
+  font-size: clamp(3rem, 4.8vw, 5.4rem);
+  line-height: 1;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.brand-philosophy-copy p {
+  max-width: 600px;
+  margin-top: clamp(1.1rem, 2vw, 1.6rem);
+  color: rgba(17, 16, 14, 0.66);
+  font: 500 clamp(1rem, 1.2vw, 1.15rem)/1.75 Inter, sans-serif;
+}
+
+.brand-philosophy-flyer {
+  position: relative;
+  margin: 0;
+  min-height: 0;
+  aspect-ratio: 9 / 14;
+  overflow: hidden;
+  border: 1px solid rgba(17, 16, 14, 0.12);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow:
+    0 34px 90px rgba(17, 16, 14, 0.14),
+    0 0 0 10px rgba(255, 255, 255, 0.24);
+  transform: translateY(8px);
+}
+
+.brand-philosophy-flyer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(17, 16, 14, 0.12), transparent 42%);
+}
+
+.brand-philosophy-flyer img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.philosophy-stack {
+  gap: 0;
+  border-top: 1px solid rgba(17, 16, 14, 0.14);
+}
+
+.philosophy-card {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 0.9rem 1rem;
+  padding: clamp(1.1rem, 2vw, 1.55rem) 0;
+  border-bottom: 1px solid rgba(17, 16, 14, 0.14);
+}
+
+.philosophy-card > span {
+  color: #a98245;
+  font: 800 0.74rem/1 Inter, sans-serif;
+  letter-spacing: 0.12em;
+}
+
+.philosophy-card h3 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.philosophy-card p {
+  grid-column: 2;
+  margin: 0;
+  color: rgba(17, 16, 14, 0.66);
+  font: 500 clamp(0.95rem, 1.05vw, 1.06rem)/1.72 Inter, sans-serif;
+}
+
+.luxury-navbar .language-selector {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.luxury-navbar .language-button,
+.luxury-navbar .menu-toggle {
+  width: auto;
+  min-width: 42px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 241, 232, 0.2);
+  color: rgba(247, 241, 232, 0.9);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.luxury-navbar.scrolled .language-button,
+.luxury-navbar.scrolled .menu-toggle {
+  color: #17120c;
+  border-color: rgba(17, 16, 14, 0.12);
+  background: rgba(17, 16, 14, 0.04);
+}
+
+.luxury-navbar .menu-toggle {
+  display: none;
+}
+
+.luxury-navbar .language-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 150px;
+  border-radius: 14px;
+  border: 1px solid rgba(244, 238, 227, 0.16);
+  background: rgba(17, 16, 14, 0.84);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Hero stabilization */
+.cinematic-hero {
+  min-height: 100svh;
+  isolation: isolate;
+}
+
+.cinematic-hero__content {
+  width: var(--container-editorial);
+  max-width: 1120px;
+  padding-block: clamp(9rem, 18vh, 14rem) clamp(5.5rem, 10vh, 8rem);
+}
+
+.cinematic-hero h1 {
+  max-width: min(940px, 100%);
+  font-size: clamp(3.15rem, 8.4vw, 8.2rem);
+  line-height: 0.97;
+  overflow-wrap: normal;
+}
+
+.cinematic-hero p {
+  max-width: 640px;
+  font-size: clamp(1rem, 1.35vw, 1.22rem);
+  line-height: 1.7;
+}
+
+.cinematic-hero__actions {
+  align-items: center;
+}
+
+.luxury-button {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+/* Portfolio restoration */
+.portfolio-editorial {
+  overflow: hidden;
+}
+
+.portfolio-rhythm {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.portfolio-rhythm__item {
+  grid-column: span 4;
+  min-height: clamp(360px, 42vw, 580px);
+  border: 1px solid rgba(244, 238, 227, 0.1);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.18);
+}
+
+.portfolio-rhythm__item:nth-child(1),
+.portfolio-rhythm__item:nth-child(6) {
+  grid-column: span 8;
+}
+
+.portfolio-rhythm__item:nth-child(3n) {
+  grid-column: span 4;
+}
+
+.portfolio-rhythm__item > img {
+  opacity: 0.82;
+}
+
+.portfolio-rhythm__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(17, 16, 14, 0.82), rgba(17, 16, 14, 0.16) 58%, rgba(17, 16, 14, 0.04));
+  pointer-events: none;
+}
+
+.portfolio-rhythm__item > div {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(9rem, 18vw, 16rem);
+}
+
+/* Calm hierarchy across editorial sections */
+.section-heading {
+  align-items: flex-end;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.section-heading h2,
+.luxury-section h2,
+.materials-showcase h2,
+.cta-editorial h2 {
+  line-height: 1;
+}
+
+@media (max-width: 1180px) {
+  .luxury-navbar.navbar {
+    width: calc(100% - 28px);
+  }
+
+  .luxury-nav-menu.nav-menu {
+    gap: 0.72rem;
+  }
+
+  .luxury-nav-menu.nav-menu a {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+
+  .brand-philosophy-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+  }
+
+  .brand-philosophy-copy {
+    grid-column: 1;
+  }
+
+  .brand-philosophy-flyer {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .philosophy-stack {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 1100px) {
+  :root {
+    --container-luxury: min(100% - 32px, 760px);
+    --container-editorial: min(100% - 32px, 760px);
+  }
+
+  .luxury-navbar.navbar,
+  .luxury-navbar.navbar.scrolled {
+    top: 12px;
+    width: calc(100% - 24px);
+    border-radius: 16px;
+  }
+
+  .luxury-nav-shell {
+    padding-inline: 14px;
+  }
+
+  .luxury-nav-content.nav-content,
+  .luxury-navbar.scrolled .luxury-nav-content.nav-content {
+    min-height: 60px;
+  }
+
+  .luxury-navbar .logo-brand {
+    max-width: min(62vw, 310px);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .luxury-navbar .menu-toggle {
+    display: inline-flex;
+    position: relative;
+    z-index: calc(var(--z-drawer) + 1);
+  }
+
+  .luxury-nav-menu.nav-menu {
+    position: fixed;
+    inset: -12px -12px auto auto;
+    z-index: var(--z-drawer);
+    width: min(430px, 100vw);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    padding: clamp(6rem, 16vh, 8rem) 28px 38px;
+    border-left: 1px solid rgba(244, 238, 227, 0.12);
+    background: linear-gradient(160deg, rgba(17, 16, 14, 0.96), rgba(45, 31, 21, 0.96));
+    box-shadow: -20px 0 80px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    overflow-y: auto;
+    transform: translateX(105%);
+    pointer-events: none;
+    transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+  }
+
+  .luxury-nav-menu.nav-menu.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .luxury-nav-menu.nav-menu li {
+    display: block;
+  }
+
+  .luxury-nav-menu.nav-menu a {
+    min-height: 58px;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(244, 238, 227, 0.12);
+    color: rgba(247, 241, 232, 0.9);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1;
+    text-transform: none;
+  }
+
+  .luxury-nav-menu.nav-menu a::after {
+    display: none;
+  }
+
+  .luxury-nav-menu.nav-menu a.active,
+  .luxury-nav-menu.nav-menu .luxury-nav-cta {
+    color: var(--lux-gold);
+    background: transparent !important;
+  }
+
+  .luxury-nav-menu.nav-menu a svg {
+    display: block;
+    flex: 0 0 auto;
+    opacity: 0.9;
+    transform: none;
+  }
+
+  .cinematic-hero__content {
+    padding-block: 9.5rem 5.25rem;
+  }
+
+  .cinematic-hero h1 {
+    font-size: clamp(3rem, 13vw, 5rem);
+    line-height: 1;
+  }
+
+  .cinematic-hero p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .cinematic-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 360px;
+  }
+
+  .luxury-button {
+    width: 100%;
+  }
+
+  .portfolio-rhythm__item,
+  .portfolio-rhythm__item:nth-child(1),
+  .portfolio-rhythm__item:nth-child(3n),
+  .portfolio-rhythm__item:nth-child(6) {
+    grid-column: 1 / -1;
+    min-height: clamp(360px, 78vw, 520px);
+  }
+
+  .section-heading {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .brand-philosophy-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .brand-philosophy-flyer {
+    min-height: 0;
+    max-width: 430px;
+    width: 100%;
+    justify-self: center;
+    order: 2;
+  }
+
+  .brand-philosophy-flyer img {
+    min-height: 0;
+  }
+
+  .philosophy-stack {
+    order: 3;
+  }
+
+  .brand-philosophy-copy {
+    order: 1;
+  }
+
+  .brand-philosophy-copy h2 {
+    font-size: clamp(2.55rem, 10vw, 4.8rem);
+  }
+
+  .philosophy-card {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --container-luxury: min(100% - 28px, 480px);
+    --container-editorial: min(100% - 28px, 480px);
+  }
+
+  .cinematic-kicker {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .cinematic-kicker::before {
+    width: 28px;
+  }
+
+  .cinematic-hero h1 {
+    font-size: clamp(2.65rem, 15vw, 4.15rem);
+  }
+
+  .floating-cta {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .brand-philosophy-section {
+    padding-block: clamp(3.6rem, 13vw, 5rem);
+  }
+
+  .brand-philosophy-layout {
+    gap: 1.6rem;
+  }
+
+  .brand-philosophy-flyer {
+    max-width: min(330px, 92vw);
+    box-shadow:
+      0 24px 60px rgba(17, 16, 14, 0.14),
+      0 0 0 6px rgba(255, 255, 255, 0.22);
+  }
+
+  .philosophy-card {
+    padding-block: 1rem;
+  }
+
+  .philosophy-card p {
+    grid-column: 1 / -1;
+  }
+
+  .ceo-editorial__portrait,
+  .ceo-editorial__portrait img {
+    min-height: 430px;
+  }
+}
+

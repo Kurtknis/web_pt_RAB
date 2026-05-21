@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Calendar, MapPin, Award, ChevronLeft, ChevronRight, X, Play } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { portfolioItems } from '../content/portfolioContent';
 import PortfolioRadioLayout from '../components/PortfolioRadioLayout';
 import '../styles/portfolio-radio.css';
 import '../App.css';

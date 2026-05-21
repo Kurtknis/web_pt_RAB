@@ -2,18 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronRight, X, Target, Compass, ListChecks, Phone, Mail, MapPin, ArrowRight, Ruler, PaintBucket, Hammer } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { youtubeVideos, homePortfolioItems } from '../content/homeContent';
-import { pricingProjects, pricingCategories, pricingPackages } from '../content/pricingPageContent';
+import { youtubeVideos } from '../content/homeContent';
+import { pricingPackages } from '../content/pricingPageContent';
 import { contactInfo } from '../content/contactPageContent';
 import PortfolioRadioLayout from '../components/PortfolioRadioLayout';
 import '../styles/portfolio-radio.css';
 import '../styles/home-portfolio-pricing.css';
 import '../App.css';
-
-const portfolioItems = homePortfolioItems.map((item) => ({
-  ...item,
-  images: item.images || [item.image]
-}));
 
 const getEmbedUrl = (url) => {
   const shortsMatch = url.match(/shorts\/([a-zA-Z0-9_-]+)/);
@@ -35,11 +30,6 @@ function HomeSimple() {
   const { t } = useLanguage();
   const [portfolioDetail, setPortfolioDetail] = useState(null);
   const [detailImageIndex, setDetailImageIndex] = useState(0);
-  const [selectedPricingCategory, setSelectedPricingCategory] = useState('all');
-
-  const filteredPricingProjects = selectedPricingCategory === 'all'
-    ? pricingProjects
-    : pricingProjects.filter(p => p.category === selectedPricingCategory);
 
   const closeModal = useCallback(() => setPortfolioDetail(null), []);
   useEffect(() => {
