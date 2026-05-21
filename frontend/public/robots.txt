@@ -1,5 +1,17 @@
 # https://ptciptakreasibuana.com/robots.txt
 User-agent: *
 Allow: /
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*?utm_
+Disallow: /search?
+
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
 
 Sitemap: https://ptciptakreasibuana.com/sitemap.xml
