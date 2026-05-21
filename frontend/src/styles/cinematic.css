@@ -163,28 +163,6 @@
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
 }
 
-.cinematic-scroll-indicator {
-  position: absolute;
-  left: 50%;
-  bottom: 1.5rem;
-  z-index: 2;
-  display: grid;
-  justify-items: center;
-  gap: 0.55rem;
-  transform: translateX(-50%);
-  color: rgba(247, 241, 232, 0.72);
-  font: 700 0.68rem Inter, sans-serif;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.cinematic-scroll-indicator i {
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(180deg, rgba(200, 164, 93, 0), #c8a45d, rgba(200, 164, 93, 0));
-  animation: scrollPulse 1.8s ease-in-out infinite;
-}
-
 .luxury-section {
   position: relative;
   padding: clamp(5rem, 9vw, 9rem) 0;

@@ -83,6 +83,7 @@ body.nav-mobile-open {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  min-width: 0;
 }
 
 .luxury-navbar.scrolled .luxury-nav-content.nav-content {
@@ -91,7 +92,9 @@ body.nav-mobile-open {
 
 .luxury-navbar .logo,
 .luxury-navbar .logo-link {
-  min-width: max-content;
+  min-width: 0;
+  max-width: 100%;
+  flex: 0 1 auto;
 }
 
 .luxury-navbar .logo-brand {
@@ -117,6 +120,7 @@ body.nav-mobile-open {
   justify-content: flex-end;
   gap: 0;
   min-width: 0;
+  flex: 1 1 auto;
 }
 
 .luxury-nav-menu.nav-menu {
@@ -192,6 +196,24 @@ body.nav-mobile-open {
   color: #17120c;
   background: transparent !important;
   box-shadow: none !important;
+}
+
+.luxury-navbar.menu-open .luxury-nav-menu.nav-menu a,
+.luxury-navbar.menu-open .luxury-nav-menu.nav-menu a:visited,
+.luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu a,
+.luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu a:visited {
+  color: rgba(247, 241, 232, 0.94) !important;
+  -webkit-text-fill-color: rgba(247, 241, 232, 0.94) !important;
+}
+
+.luxury-navbar.menu-open .luxury-nav-menu.nav-menu a:hover,
+.luxury-navbar.menu-open .luxury-nav-menu.nav-menu a.active,
+.luxury-navbar.menu-open .luxury-nav-menu.nav-menu .luxury-nav-cta,
+.luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu a:hover,
+.luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu a.active,
+.luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu .luxury-nav-cta {
+  color: #d6ad61 !important;
+  -webkit-text-fill-color: #d6ad61 !important;
 }
 
 .luxury-nav-menu.nav-menu a:hover::after,
@@ -484,6 +506,9 @@ body.nav-mobile-open {
     top: 12px;
     width: calc(100% - 24px);
     border-radius: 16px;
+    background: rgba(244, 238, 227, 0.86);
+    border-color: rgba(17, 16, 14, 0.12);
+    box-shadow: 0 18px 44px rgba(17, 16, 14, 0.16);
   }
 
   .luxury-nav-shell {
@@ -493,18 +518,33 @@ body.nav-mobile-open {
   .luxury-nav-content.nav-content,
   .luxury-navbar.scrolled .luxury-nav-content.nav-content {
     min-height: 60px;
+    gap: 10px;
   }
 
   .luxury-navbar .logo-brand {
-    max-width: min(62vw, 310px);
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
+    max-width: min(58vw, 270px);
+    color: #17120c;
+    font-size: clamp(0.62rem, 2.45vw, 0.76rem);
+    letter-spacing: 0.105em;
+  }
+
+  .luxury-navbar .logo-link {
+    overflow: hidden;
+  }
+
+  .luxury-navbar .nav-right {
+    flex: 0 0 auto;
   }
 
   .luxury-navbar .menu-toggle {
     display: inline-flex;
     position: relative;
     z-index: calc(var(--z-drawer) + 1);
+    min-width: 44px;
+    min-height: 44px;
+    color: #17120c;
+    background: rgba(17, 16, 14, 0.055);
+    border-color: rgba(17, 16, 14, 0.14);
   }
 
   .luxury-nav-menu.nav-menu {
@@ -520,7 +560,9 @@ body.nav-mobile-open {
     gap: 0;
     padding: clamp(6rem, 16vh, 8rem) 28px 38px;
     border-left: 1px solid rgba(244, 238, 227, 0.12);
-    background: linear-gradient(160deg, rgba(17, 16, 14, 0.96), rgba(45, 31, 21, 0.96));
+    background:
+      radial-gradient(circle at 24% 14%, rgba(200, 164, 93, 0.18), transparent 32%),
+      linear-gradient(160deg, rgba(17, 16, 14, 0.98), rgba(45, 31, 21, 0.98));
     box-shadow: -20px 0 80px rgba(0, 0, 0, 0.35);
     opacity: 0;
     overflow-y: auto;
@@ -569,6 +611,52 @@ body.nav-mobile-open {
     transform: none;
   }
 
+  .luxury-navbar.menu-open .luxury-nav-menu.nav-menu,
+  .luxury-navbar.menu-open .luxury-nav-menu.nav-menu.active {
+    color: #f7f1e8;
+  }
+
+  .luxury-navbar.menu-open .luxury-nav-menu.nav-menu a,
+  .luxury-navbar.menu-open .luxury-nav-menu.nav-menu a:visited,
+  .luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu a,
+  .luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu a:visited {
+    color: rgba(247, 241, 232, 0.94) !important;
+    -webkit-text-fill-color: rgba(247, 241, 232, 0.94) !important;
+    background: transparent !important;
+    text-shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
+  }
+
+  .luxury-navbar.menu-open .luxury-nav-menu.nav-menu a:hover,
+  .luxury-navbar.menu-open .luxury-nav-menu.nav-menu a.active,
+  .luxury-navbar.menu-open .luxury-nav-menu.nav-menu .luxury-nav-cta,
+  .luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu a:hover,
+  .luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu a.active,
+  .luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu .luxury-nav-cta {
+    color: #d6ad61 !important;
+    -webkit-text-fill-color: #d6ad61 !important;
+  }
+
+  .luxury-navbar.menu-open .luxury-nav-menu.nav-menu a svg,
+  .luxury-navbar.menu-open.scrolled .luxury-nav-menu.nav-menu a svg {
+    color: currentColor !important;
+    stroke: currentColor !important;
+  }
+
+  .luxury-navbar.menu-open .menu-toggle,
+  .luxury-navbar.menu-open.scrolled .menu-toggle {
+    color: #f7f1e8 !important;
+    -webkit-text-fill-color: #f7f1e8 !important;
+    background: rgba(17, 16, 14, 0.2) !important;
+    border-color: rgba(247, 241, 232, 0.58) !important;
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.3);
+  }
+
+  .luxury-navbar.menu-open .menu-toggle svg,
+  .luxury-navbar.menu-open.scrolled .menu-toggle svg {
+    color: currentColor !important;
+    stroke: currentColor !important;
+  }
+
   .cinematic-hero__content {
     padding-block: 9.5rem 5.25rem;
   }
@@ -609,14 +697,16 @@ body.nav-mobile-open {
   .brand-philosophy-layout {
     grid-template-columns: 1fr;
     gap: 2rem;
+    align-items: start;
   }
 
   .brand-philosophy-flyer {
     min-height: 0;
-    max-width: 430px;
+    max-width: min(430px, 82vw);
     width: 100%;
     justify-self: center;
     order: 2;
+    transform: none;
   }
 
   .brand-philosophy-flyer img {
@@ -632,7 +722,8 @@ body.nav-mobile-open {
   }
 
   .brand-philosophy-copy h2 {
-    font-size: clamp(2.55rem, 10vw, 4.8rem);
+    font-size: clamp(2.35rem, 8.8vw, 4.25rem);
+    line-height: 1.04;
   }
 
   .philosophy-card {
@@ -666,15 +757,24 @@ body.nav-mobile-open {
   }
 
   .brand-philosophy-section {
-    padding-block: clamp(3.6rem, 13vw, 5rem);
+    padding-block: clamp(3.2rem, 11vw, 4.5rem);
   }
 
   .brand-philosophy-layout {
-    gap: 1.6rem;
+    gap: 1.35rem;
+  }
+
+  .brand-philosophy-copy h2 {
+    font-size: clamp(2.18rem, 9.6vw, 3.45rem);
+  }
+
+  .brand-philosophy-copy p {
+    font-size: 0.98rem;
+    line-height: 1.68;
   }
 
   .brand-philosophy-flyer {
-    max-width: min(330px, 92vw);
+    max-width: min(310px, 84vw);
     box-shadow:
       0 24px 60px rgba(17, 16, 14, 0.14),
       0 0 0 6px rgba(255, 255, 255, 0.22);
@@ -682,10 +782,18 @@ body.nav-mobile-open {
 
   .philosophy-card {
     padding-block: 1rem;
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 0.7rem 0.85rem;
+  }
+
+  .philosophy-card h3 {
+    font-size: clamp(1.25rem, 6vw, 1.65rem);
   }
 
   .philosophy-card p {
     grid-column: 1 / -1;
+    font-size: 0.95rem;
+    line-height: 1.66;
   }
 
   .ceo-editorial__portrait,

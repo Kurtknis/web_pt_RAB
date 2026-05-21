@@ -43,10 +43,6 @@ function HeroSection() {
           </Link>
         </div>
       </Motion.div>
-      <div className="cinematic-scroll-indicator" aria-hidden="true">
-        <span>Scroll</span>
-        <i />
-      </div>
       <a
         className="floating-cta"
         href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent('Halo PT Cipta Kreasi Buana, saya ingin konsultasi proyek interior.')}`}
