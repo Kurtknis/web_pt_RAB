@@ -6,6 +6,7 @@ import { youtubeVideos } from '../content/homeContent';
 import { pricingPackages } from '../content/pricingPageContent';
 import { contactInfo } from '../content/contactPageContent';
 import PortfolioRadioLayout from '../components/PortfolioRadioLayout';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import '../styles/portfolio-radio.css';
 import '../styles/home-portfolio-pricing.css';
 import '../App.css';
@@ -151,11 +152,13 @@ function HomeSimple() {
             </p>
           </div>
           <div className="home-meet-ceo-photo-wrap">
-            <img
+            <OptimizedImage
               src="/ceo-radika.png"
               alt="Radika, CEO PT Cipta Kreasi Buana - Jasa Design Interior dan Arsitektur"
               className="home-meet-ceo-photo"
-              loading="lazy"
+              width="304"
+              height="304"
+              sizes="(max-width: 768px) 82vw, 32vw"
             />
           </div>
         </div>
@@ -215,11 +218,13 @@ function HomeSimple() {
       <section className="home-design-interior" aria-labelledby="home-design-interior-heading">
         <div className="home-section-inner home-design-interior-inner">
           <div className="home-design-interior-image-wrap">
-            <img
+            <OptimizedImage
               src="/design-interior-flyer.png"
               alt="Modular Kitchen - Design Interior PT Cipta Kreasi Buana, upgrade pengalaman dapur Anda"
               className="home-design-interior-image"
-              loading="lazy"
+              width="723"
+              height="1024"
+              sizes="(max-width: 768px) 84vw, 32vw"
             />
           </div>
           <div className="home-design-interior-content">
@@ -379,9 +384,13 @@ function HomeSimple() {
               <X size={22} strokeWidth={2.5} />
             </button>
             <div className="landing-portfolio-modal-image-wrap">
-              <img
+              <OptimizedImage
                 src={(portfolioDetail.images || [portfolioDetail.image])[detailImageIndex] || portfolioDetail.image}
                 alt={portfolioDetail.title}
+                width="1000"
+                height="760"
+                loading="eager"
+                sizes="92vw"
               />
               {portfolioDetail.images && portfolioDetail.images.length > 1 && (
                 <div className="landing-portfolio-modal-thumbs">
@@ -392,7 +401,7 @@ function HomeSimple() {
                       onClick={(e) => { e.stopPropagation(); setDetailImageIndex(i); }}
                       className={detailImageIndex === i ? 'active' : ''}
                     >
-                      <img src={img} alt="" />
+                      <OptimizedImage src={img} alt="" width="160" height="110" sizes="72px" />
                     </button>
                   ))}
                 </div>

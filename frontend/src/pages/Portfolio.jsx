@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Calendar, MapPin, Award, ChevronLeft, ChevronRight, X, Play } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import PortfolioRadioLayout from '../components/PortfolioRadioLayout';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import '../styles/portfolio-radio.css';
 import '../App.css';
 
@@ -90,10 +91,14 @@ function Portfolio() {
               </button>
               
               <div className="gallery-image-container">
-                <img 
+                <OptimizedImage 
                   src={galleryImages[currentImageIndex]} 
                   alt={`Portfolio PT Cipta Kreasi Buana - foto ${currentImageIndex + 1} dari ${galleryImages.length}`}
                   className="gallery-main-image"
+                  width="1200"
+                  height="900"
+                  loading="eager"
+                  sizes="92vw"
                 />
                 <div className="gallery-info">
                   <span className="gallery-counter">
@@ -114,7 +119,7 @@ function Portfolio() {
                   className={`gallery-thumbnail ${index === currentImageIndex ? 'active' : ''}`}
                   onClick={() => setCurrentImageIndex(index)}
                 >
-                  <img src={image} alt={`Thumbnail ${index + 1}`} />
+                  <OptimizedImage src={image} alt={`Thumbnail ${index + 1}`} width="180" height="120" sizes="80px" />
                 </button>
               ))}
             </div>
@@ -137,9 +142,13 @@ function Portfolio() {
               {/* Enhanced Image Section */}
               <div className="modal-gallery-unique">
                 <div className="modal-main-image">
-                  <img 
+                  <OptimizedImage 
                     src={selectedItem.images[currentImageIndex]} 
                     alt={`${selectedItem.title} - Proyek PT Cipta Kreasi Buana (${currentImageIndex + 1}/${selectedItem.images.length})`}
+                    width="1100"
+                    height="820"
+                    loading="eager"
+                    sizes="(max-width: 768px) 92vw, 52vw"
                   />
                   <button 
                     className="modal-gallery-btn"
@@ -157,7 +166,7 @@ function Portfolio() {
                       className={`modal-thumbnail ${index === currentImageIndex ? 'active' : ''}`}
                       onClick={() => setCurrentImageIndex(index)}
                     >
-                      <img src={image} alt={`Thumbnail ${index + 1}`} />
+                      <OptimizedImage src={image} alt={`Thumbnail ${index + 1}`} width="180" height="120" sizes="80px" />
                       {index === 3 && selectedItem.images.length > 4 && (
                         <div className="thumbnail-overlay">
                           +{selectedItem.images.length - 4}

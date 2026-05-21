@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { youtubeVideos, homePortfolioItems, beforeAfterPairs } from '../content/homeContent';
 import { contactInfo, mapEmbedUrl } from '../content/contactPageContent';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import '../App.css';
 
 function Home() {
@@ -74,7 +75,7 @@ function Home() {
                 onClick={() => setPortfolioDetail(item)}
                 aria-label={item.title}
               >
-                <img src={item.image} alt={item.title} loading="lazy" />
+                <OptimizedImage src={item.image} alt={item.title} width="800" height="600" sizes="(max-width: 768px) 92vw, 30vw" />
                 <div className="portfolio-overlay">
                   <span className="portfolio-category">{item.category}</span>
                   <h3>{item.title}</h3>
@@ -101,11 +102,11 @@ function Home() {
                 aria-label={pair.title}
               >
                 <div className="before-after-half before-half">
-                  <img src={pair.before} alt={t('home.before')} loading="lazy" />
+                  <OptimizedImage src={pair.before} alt={t('home.before')} width="720" height="520" sizes="(max-width: 768px) 46vw, 20vw" />
                   <span className="before-after-label">{t('home.before')}</span>
                 </div>
                 <div className="before-after-half after-half">
-                  <img src={pair.after} alt={t('home.after')} loading="lazy" />
+                  <OptimizedImage src={pair.after} alt={t('home.after')} width="720" height="520" sizes="(max-width: 768px) 46vw, 20vw" />
                   <span className="before-after-label">{t('home.after')}</span>
                 </div>
               </button>
@@ -179,7 +180,7 @@ function Home() {
           <div className="detail-modal" onClick={(e) => e.stopPropagation()}>
             <button type="button" className="detail-modal-close" onClick={() => setPortfolioDetail(null)} aria-label="Tutup">×</button>
             <div className="detail-modal-image">
-              <img src={portfolioDetail.image} alt={portfolioDetail.title} />
+              <OptimizedImage src={portfolioDetail.image} alt={portfolioDetail.title} width="1000" height="760" loading="eager" sizes="92vw" />
             </div>
             <div className="detail-modal-body">
               <span className="detail-modal-category">{portfolioDetail.category}</span>
@@ -198,11 +199,11 @@ function Home() {
             <h2 className="detail-modal-title">{beforeAfterDetail.title}</h2>
             <div className="detail-modal-ba-grid">
               <div className="detail-modal-ba-half">
-                <img src={beforeAfterDetail.before} alt={t('home.before')} />
+                <OptimizedImage src={beforeAfterDetail.before} alt={t('home.before')} width="720" height="520" loading="eager" sizes="46vw" />
                 <span className="before-after-label">{t('home.before')}</span>
               </div>
               <div className="detail-modal-ba-half">
-                <img src={beforeAfterDetail.after} alt={t('home.after')} />
+                <OptimizedImage src={beforeAfterDetail.after} alt={t('home.after')} width="720" height="520" loading="eager" sizes="46vw" />
                 <span className="before-after-label">{t('home.after')}</span>
               </div>
             </div>

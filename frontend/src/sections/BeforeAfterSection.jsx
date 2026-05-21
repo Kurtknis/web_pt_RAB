@@ -1,19 +1,20 @@
 import { beforeAfterPairs } from '../content/homeContent';
+import OptimizedImage from '../components/ui/OptimizedImage';
 
 function BeforeAfterSection() {
   return (
-    <section className="luxury-section before-after" data-reveal>
+    <section className="luxury-section before-after" data-reveal aria-labelledby="before-after-title">
       <div className="luxury-container">
         <div className="section-heading">
-          <span className="cinematic-kicker">Before and after</span>
-          <h2>Transformation as a visible design argument.</h2>
+          <span className="cinematic-kicker">Sebelum dan Sesudah</span>
+          <h2 id="before-after-title">Transformasi ruang yang terlihat, terukur, dan bernilai.</h2>
         </div>
         <div className="before-after__grid">
           {beforeAfterPairs.map((pair) => (
-            <article className="before-after__item" key={pair.title}>
+            <article className="before-after__item" key={pair.title} aria-label={`Studi transformasi ${pair.title}`}>
               <div className="before-after__images">
-                <img src={pair.before} alt={`${pair.title} before`} loading="lazy" />
-                <img src={pair.after} alt={`${pair.title} after`} loading="lazy" />
+                <OptimizedImage src={pair.before} alt={`${pair.title} sebelum renovasi interior PT Cipta Kreasi Buana`} width="720" height="520" sizes="(max-width: 768px) 46vw, 20vw" />
+                <OptimizedImage src={pair.after} alt={`${pair.title} sesudah renovasi interior PT Cipta Kreasi Buana`} width="720" height="520" sizes="(max-width: 768px) 46vw, 20vw" />
               </div>
               <h3>{pair.title}</h3>
               <p>{pair.description}</p>

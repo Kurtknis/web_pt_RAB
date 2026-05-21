@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Search, X, Filter, Heart, ShoppingCart, Eye } from 'lucide-react';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import '../App.css';
 
 function Furniture() {
@@ -247,7 +248,7 @@ function Furniture() {
           <div className="ikea-showcase-grid">
             {showcaseItems[0] && (
               <article className="ikea-tile ikea-tile--hero" onClick={() => setSelectedItem(showcaseItems[0])}>
-                <img src={showcaseItems[0].image} alt={showcaseItems[0].title} loading="lazy" />
+                <OptimizedImage src={showcaseItems[0].image} alt={showcaseItems[0].title} width="900" height="680" sizes="(max-width: 768px) 92vw, 42vw" />
                 <div className="ikea-tile-content">
                   <span className="ikea-promo-chip">Promo murah</span>
                   <h3>{showcaseItems[0].title}</h3>
@@ -265,7 +266,7 @@ function Furniture() {
 
             {showcaseItems[1] && (
               <article className="ikea-tile ikea-tile--tall" onClick={() => setSelectedItem(showcaseItems[1])}>
-                <img src={showcaseItems[1].image} alt={showcaseItems[1].title} loading="lazy" />
+                <OptimizedImage src={showcaseItems[1].image} alt={showcaseItems[1].title} width="700" height="900" sizes="(max-width: 768px) 92vw, 26vw" />
                 <div className="ikea-tile-content">
                   <span className="ikea-promo-chip">Promo murah</span>
                   <h3>{showcaseItems[1].title}</h3>
@@ -277,7 +278,7 @@ function Furniture() {
 
             {showcaseItems[2] && (
               <article className="ikea-tile ikea-tile--small" onClick={() => setSelectedItem(showcaseItems[2])}>
-                <img src={showcaseItems[2].image} alt={showcaseItems[2].title} loading="lazy" />
+                <OptimizedImage src={showcaseItems[2].image} alt={showcaseItems[2].title} width="700" height="520" sizes="(max-width: 768px) 92vw, 26vw" />
                 <div className="ikea-tile-content">
                   <span className="ikea-promo-chip">Promo murah</span>
                   <h3>{showcaseItems[2].title}</h3>
@@ -289,7 +290,7 @@ function Furniture() {
 
             {showcaseItems[3] && (
               <article className="ikea-tile ikea-tile--small" onClick={() => setSelectedItem(showcaseItems[3])}>
-                <img src={showcaseItems[3].image} alt={showcaseItems[3].title} loading="lazy" />
+                <OptimizedImage src={showcaseItems[3].image} alt={showcaseItems[3].title} width="700" height="520" sizes="(max-width: 768px) 92vw, 26vw" />
                 <div className="ikea-tile-content">
                   <span className="ikea-promo-chip">Promo murah</span>
                   <h3>{showcaseItems[3].title}</h3>
@@ -344,7 +345,7 @@ function Furniture() {
             {filteredItems.map((item) => (
               <div key={item.id} className="furniture-card-ikea">
                 <div className="furniture-image">
-                  <img src={item.image} alt={item.title} loading="lazy" />
+                  <OptimizedImage src={item.image} alt={item.title} width="640" height="480" sizes="(max-width: 768px) 92vw, 24vw" />
                   <div className="furniture-actions">
                     <button className="action-btn" title="Lihat Detail" onClick={() => setSelectedItem(item)}>
                       <Eye size={18} />
@@ -391,7 +392,7 @@ function Furniture() {
             
             <div className="modal-content">
               <div className="modal-image">
-                <img src={selectedItem.image} alt={selectedItem.title} />
+                <OptimizedImage src={selectedItem.image} alt={selectedItem.title} width="960" height="720" loading="eager" sizes="(max-width: 768px) 92vw, 46vw" />
               </div>
               
               <div className="modal-info">

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion as Motion } from 'framer-motion';
 import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import { priceRanges, pricingProjects, pricingPackages } from '../content/pricingPageContent';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import '../styles/pricing-editorial.css';
 
 function Pricing() {
@@ -69,7 +70,13 @@ function Pricing() {
             <div className="package-stage__projects">
               {projectExamples.map((project, index) => (
                 <figure key={project.id} className={index === 0 ? 'large' : ''}>
-                  <img src={project.image} alt={`${project.title}, ${project.location} interior project`} loading="lazy" />
+                  <OptimizedImage
+                    src={project.image}
+                    alt={`${project.title}, ${project.location} interior project`}
+                    width="900"
+                    height="680"
+                    sizes="(max-width: 768px) 92vw, 28vw"
+                  />
                   <figcaption>
                     <span>{project.location}</span>
                     <strong>{project.title}</strong>

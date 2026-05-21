@@ -18,7 +18,7 @@ const PRIMARY_KEYWORDS = [
 
 const pageMeta = {
   '/': {
-    title: 'Jasa Interior Tangerang & Arsitektur Premium | PT Cipta Kreasi Buana',
+    title: 'Jasa Interior & Arsitektur Premium | Cipta Kreasi Buana',
     description:
       'Studio interior, arsitektur, kontraktor interior premium, modular kitchen, dan furniture custom Tangerang Selatan untuk hunian dan ruang komersial modern.',
     image: DEFAULT_IMAGE,

@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import projects from '../content/projects';
 
 function PortfolioSection() {
@@ -16,7 +17,15 @@ function PortfolioSection() {
         <div className="portfolio-rhythm">
           {featured.map((project, index) => (
             <article className="portfolio-rhythm__item" key={project.id}>
-              <img src={project.coverImage} alt={project.title} loading={index < 2 ? 'eager' : 'lazy'} />
+              <OptimizedImage
+                src={project.coverImage}
+                alt={`${project.title} - portfolio interior PT Cipta Kreasi Buana`}
+                loading={index < 2 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : undefined}
+                width="900"
+                height="1200"
+                sizes="(max-width: 768px) 92vw, 36vw"
+              />
               <div>
                 <span>{project.category} / {project.location}</span>
                 <h3>{project.title}</h3>

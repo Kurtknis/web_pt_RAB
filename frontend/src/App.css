@@ -1,7 +1,7 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 /* ============================================================
-   Per-page CSS overrides â€” edit these files directly!
+   Per-page CSS overrides — edit these files directly!
    ============================================================ */
 @import './styles/navbar.css';
 @import './styles/landing.css';
@@ -27,6 +27,10 @@
   box-sizing: border-box;
 }
 
+.optimized-picture {
+  display: contents;
+}
+
 :root {
   /* ========== BRAND PALETTE (sesuai logo perusahaan) ========== */
   /* Logo: hitam + emas + orange */
@@ -34,7 +38,7 @@
   --gold: #c9a227;
   --gold-light: #e5c76b;
   --gold-dark: #a67c00;
-  /* Orange palette (brand accent â€“ CTA, highlight, aksen) */
+  /* Orange palette (brand accent – CTA, highlight, aksen) */
   --orange: #f5a623;
   --orange-light: #ffb84d;
   --orange-lighter: #ffc970;
@@ -370,8 +374,8 @@ html {
   height: 100vh;
   background: 
     linear-gradient(135deg, rgba(15, 39, 68, 0.75), rgba(10, 10, 10, 0.65)),
-    url('/backgroundC1.png') center/cover no-repeat,
-    url('/backgroundC1.png') center/cover no-repeat,
+    url('/backgroundC1.webp') center/cover no-repeat,
+    url('/backgroundC1.webp') center/cover no-repeat,
     linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
   display: flex;
   align-items: center;
@@ -472,7 +476,7 @@ html {
   z-index: 1;
 }
 
-/* Hero (gelap) â†’ Beige: titik-titik besar dari gelap dissolve ke beige */
+/* Hero (gelap) → Beige: titik-titik besar dari gelap dissolve ke beige */
 .dot-divider--hero-to-beige {
   height: 160px;
   background: var(--beige);
@@ -591,8 +595,8 @@ html {
   padding: 3rem 0 2.5rem;
   background:
     linear-gradient(165deg, rgba(6,6,6,0.92) 0%, rgba(18,12,6,0.82) 30%, rgba(10,10,10,0.6) 55%, rgba(15,39,68,0.72) 80%, rgba(6,6,6,0.88) 100%),
-    url('/inibackground.jpg') center/cover no-repeat,
-    url('/inibackground.jpg') center/cover no-repeat,
+    url('/inibackground.webp') center/cover no-repeat,
+    url('/inibackground.webp') center/cover no-repeat,
     #0a0a0a;
   overflow: hidden;
 }
@@ -1156,7 +1160,7 @@ html {
   letter-spacing: -0.02em;
 }
 
-/* Pricing section on landing: wider subtitle so it uses less vertical space (1â€“2 lines) */
+/* Pricing section on landing: wider subtitle so it uses less vertical space (1–2 lines) */
 .landing-pricing .landing-title {
   max-width: 920px;
 }
@@ -1494,8 +1498,8 @@ html {
 .home-hero {
   background:
     linear-gradient(135deg, rgba(15,39,68,0.75), rgba(10,10,10,0.65)),
-    url('/inibackground.jpg') center/cover no-repeat,
-    url('/inibackground.jpg') center/cover no-repeat,
+    url('/inibackground.webp') center/cover no-repeat,
+    url('/inibackground.webp') center/cover no-repeat,
     linear-gradient(135deg, #0f2744 0%, #0a0a0a 100%) !important;
   min-height: 100vh;
   display: flex;
@@ -3131,7 +3135,7 @@ html {
   letter-spacing: 0.01em;
 }
 
-/* Range Harga per mÂ² */
+/* Range Harga per m² */
 .pricing-range-section {
   padding: 4rem 0;
   background: var(--beige, #f5f0e8);
@@ -3549,7 +3553,7 @@ html {
   transform: scale(1.15);
 }
 
-/* Clients â€“ Premium UI */
+/* Clients – Premium UI */
 .clients {
   background:
     radial-gradient(ellipse 95% 70% at 20% 0%, rgba(245,166,35,0.16) 0%, transparent 60%),
@@ -4853,7 +4857,7 @@ FURNITURE PAGE IKEA STYLE ===== */
 }
 
 .modal-features li::before {
-  content: 'âœ“';
+  content: '✓';
   position: absolute;
   left: 0;
   color: var(--gold);
@@ -7773,7 +7777,7 @@ BUG STYLES (TEMPORARY) ===== */
   min-height: 80vh;
   background: 
     linear-gradient(135deg, rgba(15, 39, 68, 0.9), rgba(201, 162, 39, 0.8)),
-    url('/inibackground.jpg') center/cover no-repeat,
+    url('/inibackground.webp') center/cover no-repeat,
     url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200') center/cover;
   display: flex;
   align-items: center;
@@ -8730,7 +8734,7 @@ BUG STYLES (TEMPORARY) ===== */
   padding: 100px 0;
   background: 
     linear-gradient(135deg, rgba(15, 39, 68, 0.95), rgba(10, 10, 10, 0.9)),
-    url('/inibackground.jpg') center/cover no-repeat,
+    url('/inibackground.webp') center/cover no-repeat,
     url('https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1200') center/cover;
   color: var(--white);
   overflow: hidden;

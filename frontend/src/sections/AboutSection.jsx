@@ -1,4 +1,5 @@
 import { motion as Motion } from 'framer-motion';
+import OptimizedImage from '../components/ui/OptimizedImage';
 
 function AboutSection() {
   const philosophy = [
@@ -34,10 +35,12 @@ function AboutSection() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <img
+          <OptimizedImage
             src="/design-interior-flyer.png"
             alt="Flyer jasa design interior modern PT Cipta Kreasi Buana untuk modular kitchen dan interior premium Tangerang"
-            loading="lazy"
+            width="723"
+            height="1024"
+            sizes="(max-width: 768px) 84vw, 24vw"
           />
         </Motion.figure>
         <div className="philosophy-stack" aria-label="Prinsip desain PT Cipta Kreasi Buana">

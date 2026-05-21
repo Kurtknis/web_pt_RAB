@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { MapPin } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { portfolioItems } from '../content/portfolioContent';
+import OptimizedImage from './ui/OptimizedImage';
 import '../App.css';
 
 const CATEGORY_LABELS = {
@@ -84,13 +85,13 @@ function PortfolioRadioLayout({ onViewDetail, hideTitle }) {
               >
                 <div className="portfolio-radio-panel-inner">
                   <div className="portfolio-radio-panel-image-wrap">
-                    <img
+                    <OptimizedImage
                       src={item.images[0]}
                       alt={`${item.title} - ${item.category} - ${item.location} - PT Cipta Kreasi Buana`}
                       loading="lazy"
-                      decoding="async"
                       width="800"
                       height="450"
+                      sizes="(max-width: 768px) 92vw, 56vw"
                     />
                   </div>
                   <div className="portfolio-radio-panel-body">

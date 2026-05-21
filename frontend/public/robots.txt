@@ -1,6 +1,16 @@
 # https://ptciptakreasibuana.com/robots.txt
 User-agent: *
 Allow: /
+Allow: /layanan
+Allow: /portfolio
+Allow: /furnitur
+Allow: /harga
+Allow: /galeri
+Allow: /klien
+Allow: /konsultasi
+Allow: /kontak
+Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /*?sort=
 Disallow: /*?filter=
 Disallow: /*?utm_

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { galleryItems } from '../content/galleryContent';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import '../App.css';
 
 function Gallery() {
@@ -14,10 +15,12 @@ function Gallery() {
         <div className="gallery-grid">
           {galleryItems.map((project) => (
             <div key={project.id} className="gallery-item">
-              <img
+              <OptimizedImage
                 src={project.image}
                 alt={project.title}
-                loading="lazy" 
+                width="800"
+                height="600"
+                sizes="(max-width: 768px) 92vw, 30vw"
               />
               <div className="gallery-overlay">
                 <h3>{project.title}</h3>

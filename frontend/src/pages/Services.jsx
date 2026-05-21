@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { PaintBucket, Ruler, Wrench, Hammer, ArrowRight, CheckCircle2 } from 'lucide-react';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import '../App.css';
 
 const services = [
@@ -101,7 +102,13 @@ function Services() {
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate(`/layanan/${service.id}`); }}
             >
               <div className="svc-row-image">
-                <img src={service.image} alt={t(service.titleKey)} loading="lazy" decoding="async" />
+                <OptimizedImage
+                  src={service.image}
+                  alt={t(service.titleKey)}
+                  width="900"
+                  height="620"
+                  sizes="(max-width: 768px) 92vw, 42vw"
+                />
                 <div className="svc-row-image-overlay" />
                 <span className="svc-row-image-num">{String(i + 1).padStart(2, '0')}</span>
               </div>

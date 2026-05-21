@@ -35,8 +35,18 @@ export const homePortfolioItems = [
 // ----- BEFORE & AFTER (section "Before & After Project") -----
 // before = URL gambar sebelum, after = URL gambar sesudah, title & description = teks di modal
 export const beforeAfterPairs = [
-  { before: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600', after: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600', title: 'Renovasi Ruang Tamu & Dapur', description: 'Transformasi ruang tamu dan dapur menjadi area terbuka yang fungsional dengan material berkualitas dan desain yang selaras.' },
-  { before: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600', after: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600', title: 'Renovasi Fasad & Interior Rumah', description: 'Perubahan total fasad dan interior rumah: dari tampilan lama menjadi modern, rapi, dan bernilai jual tinggi.' }
+  {
+    before: `${BASE}/${enc('Apartemen Collins')}/${enc('Apartment-Collins-1.webp')}`,
+    after: `${BASE}/${enc('Cendana Residence Blok C1')}/${enc('Cendana-C1-1.webp')}`,
+    title: 'Renovasi Ruang Tamu dan Dapur',
+    description: 'Transformasi ruang tamu dan dapur menjadi area terbuka yang fungsional dengan material berkualitas dan desain yang selaras.',
+  },
+  {
+    before: `${BASE}/${enc('Facade Kampung Sawah')}/${enc('Rumah-Tinggal-Kampung-Sawah-1.webp')}`,
+    after: `${BASE}/${enc('Cendana Residence Blok C1')}/${enc('Cendana-C1-10.webp')}`,
+    title: 'Renovasi Fasad dan Interior Rumah',
+    description: 'Perubahan total fasad dan interior rumah: dari tampilan lama menjadi modern, rapi, dan bernilai jual tinggi.',
+  },
 ];
 
 // Kontak (telepon, email, alamat, peta) ada di: content/contactPageContent.js

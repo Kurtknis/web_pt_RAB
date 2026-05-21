@@ -1,6 +1,7 @@
 import { motion as Motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/ui/OptimizedImage';
 
 function CEOSection() {
   return (
@@ -13,7 +14,13 @@ function CEOSection() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
-          <img src="/ceo-radika.png" alt="Radika, CEO PT Cipta Kreasi Buana" loading="lazy" />
+          <OptimizedImage
+            src="/ceo-radika.png"
+            alt="Radika, CEO PT Cipta Kreasi Buana"
+            width="304"
+            height="304"
+            sizes="(max-width: 768px) 82vw, 34vw"
+          />
         </Motion.figure>
         <Motion.div
           className="ceo-editorial__story"

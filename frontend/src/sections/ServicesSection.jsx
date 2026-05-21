@@ -1,3 +1,4 @@
+import OptimizedImage from '../components/ui/OptimizedImage';
 import services from '../content/services';
 
 function ServicesSection() {
@@ -11,7 +12,13 @@ function ServicesSection() {
         <div className="services-editorial__grid">
           {services.map((service) => (
             <article className="service-panel" key={service.id}>
-              <img src={service.image} alt={service.title} loading="lazy" />
+              <OptimizedImage
+                src={service.image}
+                alt={`${service.title} - layanan PT Cipta Kreasi Buana`}
+                width="900"
+                height="620"
+                sizes="(max-width: 768px) 92vw, 25vw"
+              />
               <span>{service.eyebrow}</span>
               <h3>{service.title}</h3>
               <p>{service.description}</p>

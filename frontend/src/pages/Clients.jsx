@@ -1,6 +1,7 @@
 import { motion as Motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import { clientsList } from '../content/clientsContent';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import '../styles/clients-editorial.css';
 
 function Clients() {
@@ -44,7 +45,13 @@ function Clients() {
               transition={{ duration: 0.7, delay: (index % 3) * 0.08 }}
             >
               {client.photo ? (
-                <img src={client.photo} alt={`${client.name}, ${client.project} client`} loading="lazy" />
+                <OptimizedImage
+                  src={client.photo}
+                  alt={`${client.name}, ${client.project} client`}
+                  width="720"
+                  height="520"
+                  sizes="(max-width: 768px) 92vw, 30vw"
+                />
               ) : (
                 <div className="client-story-card__initials">{client.initials}</div>
               )}

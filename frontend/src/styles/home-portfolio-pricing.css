@@ -1,5 +1,5 @@
-﻿/* ============================================================
-   Home: SEO Landing â€” Hero, Portfolio Showcase, Layanan, Pricing, Client Trust, CTA
+/* ============================================================
+   Home: SEO Landing — Hero, Portfolio Showcase, Layanan, Pricing, Client Trust, CTA
    Brand: #F59E0B, #D97706, #0F172A, #1E293B, #F8FAFC, #94A3B8
    ============================================================ */
 
@@ -365,7 +365,7 @@
   }
 }
 
-/* ---------- SECTION 1 â€” Hero SEO ---------- */
+/* ---------- SECTION 1 — Hero SEO ---------- */
 .home-hero-seo {
   position: relative;
   min-height: 70vh;
@@ -380,7 +380,7 @@
 .home-hero-seo-bg {
   position: absolute;
   inset: 0;
-  background: url('/inibackground.jpg') center/cover no-repeat, url('/inibackground.jpg') center/cover no-repeat, #0F172A;
+  background: url('/inibackground.webp') center/cover no-repeat, url('/inibackground.webp') center/cover no-repeat, #0F172A;
 }
 
 .home-hero-seo-overlay {
@@ -458,7 +458,7 @@
   transform: translateY(-2px);
 }
 
-/* ---------- SECTION 2 â€” Portfolio Showcase ---------- */
+/* ---------- SECTION 2 — Portfolio Showcase ---------- */
 .home-portfolio-showcase {
   padding: 3rem 0;
   background: linear-gradient(
@@ -488,7 +488,7 @@
   margin-top: 1.5rem;
 }
 
-/* ---------- SECTION 3 â€” Layanan Utama ---------- */
+/* ---------- SECTION 3 — Layanan Utama ---------- */
 .home-layanan {
   padding: 3rem 0;
   background: #0F172A;
@@ -570,7 +570,7 @@
   gap: 0.6rem;
 }
 
-/* ---------- SECTION 5 â€” Client Trust ---------- */
+/* ---------- SECTION 5 — Client Trust ---------- */
 .home-client-trust {
   padding: 3rem 0;
   background: #0F172A;
@@ -642,7 +642,7 @@
   margin-top: 2rem;
 }
 
-/* ---------- SECTION 6 â€” Consultation CTA ---------- */
+/* ---------- SECTION 6 — Consultation CTA ---------- */
 .home-cta-consult {
   padding: 4rem 0;
   background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
@@ -801,7 +801,7 @@
 }
 
 .home-portfolio-detail-meta span + span::before {
-  content: ' Â· ';
+  content: ' · ';
 }
 
 .home-portfolio-cta {
