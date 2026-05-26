@@ -22,6 +22,7 @@ html {
   scroll-behavior: smooth;
   background: var(--charcoal);
   scroll-padding-top: 110px;
+  overflow-x: hidden;
 }
 
 body {
@@ -31,6 +32,10 @@ body {
   font-family: var(--font-inter), system-ui, sans-serif;
   overflow-x: hidden;
   text-rendering: geometricPrecision;
+}
+
+main {
+  overflow-x: hidden;
 }
 
 body.nav-open {
@@ -141,6 +146,7 @@ a {
 
 .luxury-container {
   width: var(--container);
+  max-width: min(1400px, 92vw);
   margin-inline: auto;
 }
 
@@ -168,6 +174,8 @@ h3 {
   margin: 0;
   font-family: var(--font-playfair), Georgia, serif;
   letter-spacing: 0;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 p {
@@ -175,6 +183,8 @@ p {
 }
 
 .section {
+  position: relative;
+  isolation: isolate;
   padding-block: var(--section);
   scroll-margin-top: 110px;
 }
@@ -193,6 +203,9 @@ p {
 }
 
 .page-shell {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
   padding-top: 72px;
   background: var(--ivory);
 }
@@ -337,10 +350,10 @@ p {
 
 .site-nav {
   position: fixed;
-  z-index: 50;
+  z-index: 100;
   top: 16px;
   left: 50%;
-  width: min(1180px, calc(100% - 40px));
+  width: min(95%, 1400px);
   transform: translateX(-50%);
   color: var(--ivory);
   transition: color 180ms ease;
@@ -491,6 +504,7 @@ p {
 
 .hero {
   position: relative;
+  isolation: isolate;
   min-height: 100svh;
   overflow: hidden;
   color: var(--charcoal);
@@ -524,7 +538,7 @@ p {
 
 .hero h1 {
   max-width: 9.6ch;
-  font-size: clamp(4rem, 8.5vw, 9rem);
+  font-size: clamp(4rem, 9vw, 9rem);
   line-height: 0.9;
 }
 
@@ -735,6 +749,8 @@ p {
 
 .project-card {
   position: relative;
+  isolation: isolate;
+  min-width: 0;
   min-height: clamp(390px, 42vw, 590px);
   grid-column: span 4;
   display: flex;
@@ -752,6 +768,7 @@ p {
 
 .project-card__image {
   object-fit: cover;
+  aspect-ratio: 4 / 5;
   opacity: 0.78;
   transition: transform 700ms ease, opacity 700ms ease;
 }
@@ -760,6 +777,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 0;
   background: linear-gradient(0deg, rgba(15, 12, 9, 0.86), rgba(15, 12, 9, 0.18) 58%, transparent);
 }
 
@@ -1068,6 +1086,7 @@ p {
 
 .preview-strip figure,
 .gallery-grid figure {
+  min-width: 0;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line-light);
@@ -1105,6 +1124,7 @@ p {
 
 .project-hero {
   position: relative;
+  isolation: isolate;
   min-height: 86svh;
   display: grid;
   align-items: end;
@@ -1120,6 +1140,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 0;
   background: linear-gradient(0deg, rgba(15, 12, 9, 0.88), rgba(15, 12, 9, 0.2));
 }
 
@@ -1176,6 +1197,7 @@ p {
 
 .portfolio-premium {
   position: relative;
+  isolation: isolate;
   overflow: clip;
   color: var(--ivory);
   background:
@@ -1217,6 +1239,8 @@ p {
 
 .featured-project {
   position: relative;
+  isolation: isolate;
+  min-width: 0;
   min-height: clamp(520px, 72vw, 760px);
   display: flex;
   align-items: end;
@@ -1235,6 +1259,7 @@ p {
 .featured-project__overlay {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background:
     linear-gradient(90deg, rgba(17, 17, 17, 0.88), rgba(17, 17, 17, 0.28) 58%, rgba(17, 17, 17, 0.72)),
     linear-gradient(0deg, rgba(17, 17, 17, 0.92), transparent 52%);
@@ -1357,7 +1382,10 @@ p {
 
 .portfolio-project-card {
   grid-column: span 4;
+  position: relative;
+  isolation: isolate;
   min-width: 0;
+  overflow: hidden;
   display: grid;
   grid-template-rows: minmax(290px, 0.9fr) auto;
   border: 1px solid var(--line-light);
@@ -1378,7 +1406,9 @@ p {
 
 .portfolio-project-card__image {
   position: relative;
+  isolation: isolate;
   min-height: clamp(300px, 34vw, 460px);
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   border: 0;
   color: var(--ivory);
@@ -1388,6 +1418,7 @@ p {
 
 .portfolio-project-card__image img {
   object-fit: cover;
+  aspect-ratio: 4 / 5;
   filter: saturate(0.74) contrast(0.96);
   transition: transform 760ms var(--ease-luxury), filter 760ms var(--ease-luxury);
 }
@@ -1503,6 +1534,8 @@ p {
 }
 
 .comparison-card {
+  position: relative;
+  overflow: hidden;
   min-width: 0;
   border: 1px solid var(--line-light);
   background: rgba(245, 241, 234, 0.055);
@@ -1598,7 +1631,7 @@ p {
 
 .portfolio-image-modal {
   position: fixed;
-  z-index: 95;
+  z-index: 120;
   inset: 0;
   display: grid;
   place-items: center;
@@ -1663,6 +1696,7 @@ p {
 
 .pricing-experience {
   position: relative;
+  isolation: isolate;
   overflow: clip;
   background: var(--ivory);
 }
@@ -1809,6 +1843,8 @@ p {
 
 .service-pricing-card {
   position: relative;
+  isolation: isolate;
+  min-width: 0;
   display: grid;
   grid-template-columns: minmax(176px, 0.42fr) minmax(0, 0.58fr);
   min-height: 310px;
@@ -1959,6 +1995,8 @@ p {
 }
 
 .ba-section {
+  position: relative;
+  isolation: isolate;
   background: var(--charcoal);
   color: var(--ivory);
 }
@@ -1975,6 +2013,8 @@ p {
 }
 
 .ba-showcase-card {
+  position: relative;
+  overflow: hidden;
   min-width: 0;
   border: 1px solid var(--line-light);
   background: rgba(245, 241, 234, 0.055);
@@ -2065,6 +2105,8 @@ p {
 
 .portfolio-masonry figure {
   position: relative;
+  isolation: isolate;
+  min-width: 0;
   min-height: 360px;
   margin: 0;
   overflow: hidden;
@@ -2122,6 +2164,8 @@ p {
 }
 
 .trust-section {
+  position: relative;
+  isolation: isolate;
   background:
     linear-gradient(90deg, rgba(17, 17, 17, 0.045) 1px, transparent 1px),
     var(--ivory-2);
@@ -2199,9 +2243,9 @@ p {
 
 .floating-wa {
   position: fixed;
-  z-index: 45;
-  right: 22px;
-  bottom: 22px;
+  z-index: 40;
+  right: max(clamp(16px, 3vw, 32px), env(safe-area-inset-right));
+  bottom: max(clamp(16px, 3vw, 32px), env(safe-area-inset-bottom));
   min-height: 52px;
   display: inline-flex;
   align-items: center;
@@ -2227,9 +2271,9 @@ p {
 
 .conversion-dock {
   position: fixed;
-  z-index: 46;
-  right: 22px;
-  bottom: 22px;
+  z-index: 40;
+  right: max(clamp(16px, 3vw, 32px), env(safe-area-inset-right));
+  bottom: max(clamp(16px, 3vw, 32px), env(safe-area-inset-bottom));
   display: grid;
   gap: 0.5rem;
   pointer-events: none;
@@ -2718,9 +2762,80 @@ p {
   padding: clamp(1rem, 4vw, 4rem);
 }
 
+/* Surgical layout-stability layer: containment only, preserving existing visual language. */
+.section > *,
+.page-shell > *,
+.hero > *,
+.portfolio-premium > *,
+.pricing-experience > *,
+.admin-shell > *,
+.client-portal > * {
+  min-width: 0;
+}
+
+.section-heading,
+.hero__content,
+.project-hero__content,
+.portfolio-premium__intro,
+.pricing-editorial-copy,
+.featured-project__content,
+.footer__grid,
+.trust-layout,
+.consultation-path,
+.project-story,
+.project-specs {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.brand-philosophy__grid,
+.portfolio-grid,
+.portfolio-mosaic,
+.comparison-grid,
+.before-after__grid,
+.service-grid,
+.testimonial-grid,
+.preview-strip,
+.gallery-grid,
+.pricing-editorial-grid,
+.pricing-metrics,
+.ba-grid,
+.portfolio-masonry,
+.trust-stats,
+.logo-row,
+.admin-grid,
+.admin-pipeline,
+.lead-detail-grid,
+.client-portal__grid,
+.portal-progress,
+.topic-clusters {
+  min-width: 0;
+}
+
+.service-card,
+.pricing-card,
+.testimonial-card,
+.consult-card,
+.before-card,
+.project-card,
+.portfolio-project-card,
+.comparison-card,
+.service-pricing-card,
+.ba-showcase-card,
+.trust-panel,
+.admin-grid article,
+.admin-pipeline article,
+.client-portal__grid article,
+.portal-progress article,
+.topic-clusters article,
+.insight-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .service-modal-backdrop {
   position: fixed;
-  z-index: 90;
+  z-index: 120;
   inset: 0;
   display: grid;
   place-items: center;
@@ -2779,7 +2894,71 @@ p {
   padding-bottom: 0.42rem;
 }
 
-@media (max-width: 980px) {
+/* Viewport-specific stabilization for large type and dense grids. */
+@media (max-width: 1440px) {
+  .hero h1,
+  .project-hero h1,
+  .portfolio-premium__intro h1,
+  .portfolio-premium__intro h2,
+  .featured-project h3 {
+    max-width: 10ch;
+    font-size: clamp(4rem, 9vw, 10rem);
+    line-height: 0.9;
+  }
+}
+
+@media (max-width: 1280px) {
+  .site-nav__links {
+    gap: clamp(0.65rem, 1.1vw, 1rem);
+  }
+
+  .site-nav__links a,
+  .site-nav__right {
+    font-size: 0.68rem;
+  }
+
+  .brand-philosophy__grid {
+    grid-template-columns: minmax(360px, 0.98fr) minmax(220px, 300px) minmax(280px, 0.78fr);
+  }
+
+  .portfolio-project-card h3,
+  .project-card h3 {
+    font-size: clamp(2rem, 3.6vw, 3.45rem);
+  }
+}
+
+@media (max-width: 1100px) {
+  .site-nav__links,
+  .site-nav__cta {
+    display: none;
+  }
+
+  .site-nav__toggle {
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .hero__grid,
+  .brand-philosophy__grid,
+  .ceo-section__grid,
+  .detail-grid__inner,
+  .consultation-grid,
+  .pricing-layout,
+  .pricing-editorial-grid,
+  .trust-layout,
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-editorial-copy {
+    position: relative;
+    top: auto;
+    min-height: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 1100px) {
   :root {
     --container: min(100% - 32px, 760px);
   }
@@ -2976,6 +3155,16 @@ p {
   .portal-progress,
   .topic-clusters {
     grid-template-columns: 1fr;
+  }
+
+  .before-after__grid,
+  .service-grid,
+  .testimonial-grid,
+  .preview-strip,
+  .gallery-grid,
+  .comparison-grid,
+  .portfolio-masonry {
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   }
 
   .project-card,
@@ -3203,14 +3392,14 @@ p {
   }
 
   .floating-wa {
-    right: 14px;
-    bottom: 14px;
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
   }
 
   .conversion-dock {
     left: 14px;
-    right: 14px;
-    bottom: 14px;
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -3220,5 +3409,29 @@ p {
 
   .inquiry-form__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1,
+  .project-hero h1,
+  .portfolio-premium__intro h1,
+  .portfolio-premium__intro h2,
+  .featured-project h3,
+  .cta-section h2 {
+    max-width: 100%;
+    font-size: clamp(3rem, 14vw, 5.2rem);
+  }
+
+  .project-card,
+  .featured-project,
+  .portfolio-project-card__image,
+  .portfolio-masonry figure,
+  .portfolio-masonry figure.is-tall {
+    min-height: clamp(300px, 82vw, 430px);
+  }
+
+  .footer {
+    padding-bottom: max(clamp(5.5rem, 18vw, 7rem), calc(env(safe-area-inset-bottom) + 5.5rem));
   }
 }

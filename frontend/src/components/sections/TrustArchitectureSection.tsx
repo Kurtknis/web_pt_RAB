@@ -6,7 +6,7 @@ export function TrustArchitectureSection() {
       <div className="luxury-container trust-architecture__grid">
         <div>
           <p className="kicker">Trust System</p>
-          <h2 id="trust-architecture-title">Dibangun untuk keputusan proyek yang lebih tenang.</h2>
+          <h2 id="trust-architecture-title">Hadir untuk keputusan proyek yang lebih bijaksana.</h2>
           <p>
             Platform ini menyiapkan alur konsultasi, quotation, dan dokumentasi proyek agar calon klien mendapat
             konteks yang jelas sebelum mengambil keputusan.
