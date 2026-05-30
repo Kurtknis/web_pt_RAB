@@ -9,5 +9,5 @@ export function PortfolioSection({ all = false }: { all?: boolean }) {
   const content = getContentProvider();
   const projects = all ? content.portfolio() : content.featuredPortfolio();
 
-  return <PortfolioExperience projects={projects} />;
+  return <PortfolioExperience projects={projects} headingLevel={all ? 'h1' : 'h2'} />;
 }

@@ -15,10 +15,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return createMetadata({ title: "Insights | Cipta Kreasi Buana", path: "/insights" });
 
   return createMetadata({
-    title: `${post.title} | Cipta Kreasi Buana`,
+    title: post.title,
     description: post.excerpt,
     path: `/insights/${post.slug}`,
     keywords: post.tags,
+    type: "article",
+    publishedTime: post.publishedAt,
   });
 }
 

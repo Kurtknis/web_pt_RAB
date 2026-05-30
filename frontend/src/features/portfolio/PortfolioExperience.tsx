@@ -151,7 +151,15 @@ function ProjectComparison({ project }: { project: Project }) {
   );
 }
 
-export function PortfolioExperience({ projects, showIntro = true }: { projects: readonly Project[]; showIntro?: boolean }) {
+export function PortfolioExperience({
+  projects,
+  showIntro = true,
+  headingLevel = 'h1',
+}: {
+  projects: readonly Project[];
+  showIntro?: boolean;
+  headingLevel?: 'h1' | 'h2';
+}) {
   const [activeCategory, setActiveCategory] = useState<PortfolioCategory>('All');
   const [modalProject, setModalProject] = useState<Project | null>(null);
   const featured = projects.find((project) => project.slug === 'namo-seafood-pik') ?? projects[0];
@@ -162,6 +170,7 @@ export function PortfolioExperience({ projects, showIntro = true }: { projects: 
   }, [activeCategory, projects]);
 
   const comparisonProjects = projects.filter((project) => detailMap[project.slug]).slice(0, 3);
+  const HeadingTag = headingLevel;
 
   return (
     <section className="portfolio-premium section" id="portfolio" aria-labelledby="portfolio-premium-title">
@@ -170,7 +179,7 @@ export function PortfolioExperience({ projects, showIntro = true }: { projects: 
           <div className="portfolio-premium__intro">
             <div>
               <p className="kicker">Portfolio</p>
-              <h1 id="portfolio-premium-title">Transformasi Ruang</h1>
+              <HeadingTag id="portfolio-premium-title">Transformasi Ruang</HeadingTag>
             </div>
             <p>
               A curated view of residential, apartment, commercial, interior, and renovation work shaped through proportion,

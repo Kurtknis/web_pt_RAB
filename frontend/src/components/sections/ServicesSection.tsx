@@ -12,7 +12,7 @@ export function ServicesSection() {
         <SectionHeading
           kicker="Keahlian Studio"
           title="Disciplines that move from concept to completion."
-          body="Layanan dibuat static-first, tetapi tetap mudah dikembangkan melalui content TypeScript."
+          body="Jasa interior, arsitektur, design build, renovasi, dan furniture custom untuk rumah, apartemen, kantor, restoran, dan ruang komersial di Jakarta serta Tangerang Selatan."
         />
         <div className="service-grid">
           {services.map((service) => (

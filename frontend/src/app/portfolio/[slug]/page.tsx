@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { createMetadata } from '@/lib/seo';
-import { JsonLd, breadcrumbSchema } from '@/lib/schema';
+import { JsonLd, breadcrumbSchema, projectCreativeWorkSchema } from '@/lib/schema';
 import { getProjectBySlug, parseSlugParam } from '@/services/content';
 import { CTASection } from '@/components/sections/CTASection';
 import { getContentProvider } from '@/providers/contentProvider';
@@ -23,10 +23,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return createMetadata({ title: 'Portofolio | Cipta Kreasi Buana', path: '/portfolio' });
 
   return createMetadata({
-    title: `${project.title} | Portofolio Cipta Kreasi Buana`,
-    description: project.description,
+    title: `${project.title} Interior ${project.location}`,
+    description: `${project.description} Gaya ${project.designStyle}, tipe ruang ${project.roomType}, material ${project.materials.slice(0, 2).join(' dan ')}.`,
     path: `/portfolio/${project.slug}`,
     image: project.image,
+    keywords: [project.location, project.category, project.designStyle, project.roomType, ...project.materials],
   });
 }
 
@@ -41,9 +42,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Portfolio', path: '/portfolio' }, { name: project.title, path: `/portfolio/${project.slug}` }])} />
+      <JsonLd data={{ '@context': 'https://schema.org', ...projectCreativeWorkSchema(project) }} />
       <main className="project-detail">
         <section className="project-hero">
-          <Image src={project.image} alt={project.title} fill priority sizes="100vw" />
+          <Image src={project.image} alt={`${project.title} ${project.designStyle} oleh PT Cipta Kreasi Buana`} fill priority fetchPriority="high" sizes="100vw" />
           <div className="project-hero__content luxury-container">
             <p className="kicker">
               {project.category} / {project.location}
@@ -83,7 +85,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div>
               <h2>Material direction</h2>
               <ul>
-                {caseStudy.materials.map((item) => (
+                {project.materials.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
@@ -93,8 +95,17 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 ))}
               </div>
             </div>
+            <div>
+              <h2>Project facts</h2>
+              <ul>
+                <li>{project.designStyle}</li>
+                <li>{project.roomType}</li>
+                <li>{project.areaSize}</li>
+                <li>{project.timeline}</li>
+              </ul>
+            </div>
           </div>
-          <div className="luxury-container">
+          <div className="luxury-container project-gallery">
             <MediaViewer images={project.gallery} title={project.title} />
           </div>
         </section>

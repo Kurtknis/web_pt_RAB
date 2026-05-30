@@ -1,5 +1,6 @@
 import { CTASection } from '@/components/sections/CTASection';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { LocalSeoSection } from '@/components/sections/LocalSeoSection';
 import { PortfolioSection } from '@/components/sections/PortfolioSection';
 import { ServicesSection } from '@/components/sections/ServicesSection';
 import { TestimonialSection } from '@/components/sections/TestimonialSection';
@@ -13,6 +14,7 @@ export default function HomePage() {
       <PortfolioSection />
       <TestimonialSection />
       <TrustArchitectureSection />
+      <LocalSeoSection />
       <CTASection />
     </main>
   );

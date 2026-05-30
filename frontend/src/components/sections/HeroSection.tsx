@@ -16,7 +16,8 @@ export function HeroSection() {
           <h1>Ruang tenang untuk hidup modern.</h1>
           <p>
             PT Cipta Kreasi Buana merancang interior, arsitektur, renovasi premium, dan furniture custom dengan ritme
-            editorial, detail presisi, dan eksekusi yang mudah diikuti.
+            editorial, detail presisi, dan eksekusi yang mudah diikuti untuk Jakarta, Tangerang Selatan, BSD, Bintaro,
+            Alam Sutera, dan Serpong.
           </p>
           <div className="hero__actions">
             <Link className="button button--light" href="/portfolio">
@@ -41,6 +42,7 @@ export function HeroSection() {
             alt="Interior premium dengan pencahayaan hangat karya PT Cipta Kreasi Buana"
             fill
             priority
+            fetchPriority="high"
             sizes="(max-width: 980px) 100vw, 48vw"
             className="hero__image"
           />

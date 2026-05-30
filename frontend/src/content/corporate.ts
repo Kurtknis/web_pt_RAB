@@ -14,6 +14,16 @@ export const serviceGuarantees = [
 
 export const faqs = [
   {
+    question: "Apakah PT Cipta Kreasi Buana melayani jasa interior Jakarta?",
+    answer:
+      "Ya. Tim melayani desain interior apartemen, rumah, kantor, restoran, retail, custom furniture, dan renovasi interior untuk Jakarta dan area Jabodetabek tertentu.",
+  },
+  {
+    question: "Area Tangerang Selatan mana saja yang dilayani?",
+    answer:
+      "Area utama mencakup Pamulang, BSD, Serpong, Bintaro, Alam Sutera, Tangerang, dan lokasi sekitar yang masih memungkinkan koordinasi site visit dan instalasi.",
+  },
+  {
     question: "Apakah bisa mulai dari konsultasi kecil?",
     answer: "Bisa. Tim akan membaca kebutuhan awal dan memberi arahan apakah cukup konsultasi, perlu desain, atau langsung design build.",
   },

@@ -7,6 +7,9 @@ type SeoInput = {
   path?: string;
   image?: string;
   keywords?: string[];
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
 };
 
 export function createMetadata({
@@ -15,16 +18,38 @@ export function createMetadata({
   path = '/',
   image = '/backgroundC1.png',
   keywords = [],
+  type = 'website',
+  publishedTime,
+  modifiedTime,
 }: SeoInput = {}): Metadata {
   const canonical = new URL(path, siteUrl).toString();
   const absoluteImage = new URL(image, siteUrl).toString();
+  const isRoot = path === '/';
+  const brandedTitle = title.includes(company.shortName) || title.includes(company.name);
 
   return {
     metadataBase: new URL(siteUrl),
-    title,
+    title: isRoot
+      ? {
+          default: title,
+          template: `%s | ${company.shortName}`,
+        }
+      : brandedTitle
+        ? { absolute: title }
+        : title,
     description,
     keywords: [...seoKeywords, ...keywords],
+    applicationName: company.name,
+    authors: [{ name: company.name, url: siteUrl }],
+    creator: company.name,
+    publisher: company.name,
+    category: 'Interior Design, Architecture, Renovation, Custom Furniture',
     manifest: '/site.webmanifest',
+    formatDetection: {
+      telephone: true,
+      email: true,
+      address: true,
+    },
     icons: {
       icon: [
         { url: '/favicon.ico', sizes: 'any' },
@@ -53,7 +78,9 @@ export function createMetadata({
       url: canonical,
       siteName: company.name,
       locale: 'id_ID',
-      type: 'website',
+      type,
+      ...(publishedTime ? { publishedTime } : {}),
+      ...(modifiedTime ? { modifiedTime } : {}),
       images: [{ url: absoluteImage, width: 1200, height: 630, alt: company.name }],
     },
     twitter: {

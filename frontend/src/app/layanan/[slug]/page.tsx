@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { createMetadata } from '@/lib/seo';
-import { JsonLd, breadcrumbSchema } from '@/lib/schema';
+import { JsonLd, breadcrumbSchema, serviceDetailSchema } from '@/lib/schema';
 import { getServiceBySlug, parseSlugParam } from '@/services/content';
 import { CTASection } from '@/components/sections/CTASection';
 import { getContentProvider } from '@/providers/contentProvider';
@@ -21,10 +21,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return createMetadata({ title: 'Layanan | Cipta Kreasi Buana', path: '/layanan' });
 
   return createMetadata({
-    title: `${service.title} Premium | Cipta Kreasi Buana`,
-    description: service.description,
+    title: `${service.title} Premium`,
+    description: `${service.description} Layanan untuk Jakarta, Tangerang Selatan, BSD, Bintaro, Alam Sutera, Serpong, dan Jabodetabek.`,
     path: `/layanan/${service.slug}`,
     image: service.image,
+    keywords: [service.title, ...service.benefits],
   });
 }
 
@@ -38,6 +39,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Layanan', path: '/layanan' }, { name: service.title, path: `/layanan/${service.slug}` }])} />
+      <JsonLd data={serviceDetailSchema(service)} />
       <main className="page-shell">
         <section className="section section--ivory detail-grid">
           <div className="luxury-container detail-grid__inner">

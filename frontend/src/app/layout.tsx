@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { SiteNavbar } from '@/components/layout/SiteNavbar';
 import { ConversionDock } from '@/components/layout/ConversionDock';
 import { createMetadata } from '@/lib/seo';
-import { JsonLd, faqSchema, localBusinessSchema, organizationSchema, servicesSchema } from '@/lib/schema';
+import { JsonLd, faqSchema, localBusinessSchema, organizationSchema, servicesSchema, websiteSchema } from '@/lib/schema';
 import { ResourceHints } from './resource-hints';
 import '@/styles/globals.css';
 
@@ -43,6 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="id" data-scroll-behavior="smooth" className={`${inter.variable} ${playfair.variable} ${bebas.variable}`}>
       <body>
         <ResourceHints />
+        <JsonLd data={websiteSchema()} />
         <JsonLd data={organizationSchema()} />
         <JsonLd data={localBusinessSchema()} />
         <JsonLd data={servicesSchema()} />

@@ -30,10 +30,21 @@ export function SiteNavbarClient({
     return () => document.body.classList.remove("nav-open");
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <header className={`site-nav ${scrolled ? "is-scrolled" : ""} ${open ? "is-open" : ""}`}>
       <div className="site-nav__shell">
-        <Link href="/" className="site-nav__brand" aria-label="PT Cipta Kreasi Buana home">
+        <Link href="/" className="site-nav__brand" aria-label="PT Cipta Kreasi Buana home" onClick={() => setOpen(false)}>
           <Image src="/ptkreasi.jpg" alt="Logo PT Cipta Kreasi Buana" width={42} height={42} priority />
           <span>Cipta Kreasi Buana</span>
         </Link>
@@ -63,7 +74,7 @@ export function SiteNavbarClient({
       <div className="mobile-drawer" aria-hidden={!open}>
         <nav id="mobile-navigation" className="mobile-drawer__links" aria-label="Navigasi mobile">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            <Link key={item.href} href={item.href} className={pathname === item.href ? "is-active" : ""} onClick={() => setOpen(false)}>
               {item.label}
             </Link>
           ))}

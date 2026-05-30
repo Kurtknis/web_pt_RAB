@@ -18,7 +18,6 @@ export function MediaViewer({ images, title }: { images: readonly string[]; titl
               width={900}
               height={650}
               sizes="(max-width: 760px) 100vw, 33vw"
-              style={{ width: "100%", height: "auto" }}
             />
           </button>
         ))}
